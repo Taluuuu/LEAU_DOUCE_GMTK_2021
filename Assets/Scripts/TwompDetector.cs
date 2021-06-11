@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class TwompDetector : MonoBehaviour
 {
+    public Twomp _twomp;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance._onTwompDetect.Invoke();
+            _twomp.TwompDetect();
+            _twomp.SetDetectorHeight(transform.position);
+
         }
     }
 
-    private void OnTriggerLeave(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance._onTwompNoDetect.Invoke();
+            _twomp.TwompNoDetect();
         }
     }
 }
