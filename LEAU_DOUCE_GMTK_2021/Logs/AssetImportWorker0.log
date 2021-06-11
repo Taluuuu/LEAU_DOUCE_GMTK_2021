@@ -310,3 +310,27 @@ Received Import Request.
 Start importing Assets/Scripts/PlayerBehavior.cs using Guid(e3e984a4d97bed0439271ce4b58f0fed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd805c08f68ac14738e70c269f138b1f3') in 0.005556 seconds
   Import took 0.013071 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 182.511642 seconds.
+  path: Assets/Scripts/PlayerBehavior.cs
+  artifactKey: Guid(e3e984a4d97bed0439271ce4b58f0fed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerBehavior.cs using Guid(e3e984a4d97bed0439271ce4b58f0fed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '188f2e7b67ca7f6bf42ffa3a6d58d0c4') in 0.007206 seconds
+  Import took 0.014908 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 36.016734 seconds.
+  path: Assets/Scripts/Movement.cs
+  artifactKey: Guid(c6a53935bcae3324ca16b7afd9365fb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Movement.cs using Guid(c6a53935bcae3324ca16b7afd9365fb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ced80db0426f70e4268ba992b4b41d9a') in 0.003294 seconds
+  Import took 0.010320 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001030 seconds.
+  path: Assets/Scripts/Movement.cs
+  artifactKey: Guid(c6a53935bcae3324ca16b7afd9365fb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Movement.cs using Guid(c6a53935bcae3324ca16b7afd9365fb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ced80db0426f70e4268ba992b4b41d9a') in 0.002344 seconds
+  Import took 0.009457 seconds .
+
