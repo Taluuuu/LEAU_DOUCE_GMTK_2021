@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class TwompPlayerDetector : MonoBehaviour
 {
+    public Player _player;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance._onHit.Invoke();
+            _player.Hit();
         }
     }
 }
