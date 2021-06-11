@@ -198,3 +198,115 @@ Received Import Request.
 Start importing Assets/Scripts/TwompDetector.cs using Guid(b3834acb19ae20c47acfd26425fb0152) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76e6c897c765536edc8882f3c8b7b874') in 0.002158 seconds
   Import took 0.007402 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 2006.391184 seconds.
+  path: Assets/Scripts/TwompDetector.cs
+  artifactKey: Guid(b3834acb19ae20c47acfd26425fb0152) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/TwompDetector.cs using Guid(b3834acb19ae20c47acfd26425fb0152) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb7b4223be49526a3fd8c68eec4d0c08') in 0.004181 seconds
+  Import took 0.017869 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.242919 seconds.
+  path: Assets/Spike.prefab
+  artifactKey: Guid(cace59192961286448cda144cdb2178e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Spike.prefab using Guid(cace59192961286448cda144cdb2178e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '429fdaacdee4192e96f244ef757fd056') in 0.862924 seconds
+  Import took 0.866908 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.978124 seconds.
+  path: Assets/Scripts/Twomp.cs
+  artifactKey: Guid(994b2f9ae4ce15543b1fb9f7b921ce7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Twomp.cs using Guid(994b2f9ae4ce15543b1fb9f7b921ce7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4f6ce6516bc214ac7172fcb0889b001') in 0.002567 seconds
+  Import took 0.008046 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001590 seconds.
+  path: Assets/Scripts/Twomp.cs
+  artifactKey: Guid(994b2f9ae4ce15543b1fb9f7b921ce7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Twomp.cs using Guid(994b2f9ae4ce15543b1fb9f7b921ce7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4f6ce6516bc214ac7172fcb0889b001') in 0.003685 seconds
+  Import took 0.010697 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.932950 seconds.
+  path: Assets/SpikeBehaviour.cs
+  artifactKey: Guid(bbf6e533cb8fff14cbcb8a72b36be9f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SpikeBehaviour.cs using Guid(bbf6e533cb8fff14cbcb8a72b36be9f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7a7ed441d5cb3f6c70033bcc554d2ce') in 0.002641 seconds
+  Import took 0.008300 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.611542 seconds.
+  path: Assets/Scripts/NewBehaviourScript.cs
+  artifactKey: Guid(24fd93e2e2989364e802cf67b5a315b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/NewBehaviourScript.cs using Guid(24fd93e2e2989364e802cf67b5a315b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34c06677895551c8020086e214f44f56') in 0.005692 seconds
+  Import took 0.012962 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.610371 seconds.
+  path: Assets/Scripts/NewBehaviourScript.cs
+  artifactKey: Guid(24fd93e2e2989364e802cf67b5a315b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/NewBehaviourScript.cs using Guid(24fd93e2e2989364e802cf67b5a315b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa0a3eed3dfc5f2474fbf4def5093c08') in 0.003554 seconds
+  Import took 0.011803 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.296799 seconds.
+  path: Assets/Scripts/GameManager.cs
+  artifactKey: Guid(24fd93e2e2989364e802cf67b5a315b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GameManager.cs using Guid(24fd93e2e2989364e802cf67b5a315b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef5c4412462cac5ce9536c57ce052bd8') in 0.002750 seconds
+  Import took 0.010531 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 497.346505 seconds.
+  path: Assets/Scripts/TwompDetector.cs
+  artifactKey: Guid(b3834acb19ae20c47acfd26425fb0152) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/TwompDetector.cs using Guid(b3834acb19ae20c47acfd26425fb0152) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95c2e4e0ba83578ef5420c0a34153dcb') in 0.003285 seconds
+  Import took 0.010348 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.898170 seconds.
+  path: Assets/Scripts/NewBehaviourScript.cs
+  artifactKey: Guid(dde64514b8c3b82419ab5585b1c6a456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/NewBehaviourScript.cs using Guid(dde64514b8c3b82419ab5585b1c6a456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2f7763b6c2cac487324d3cffb4ee62d') in 0.002030 seconds
+  Import took 0.010381 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001743 seconds.
+  path: Assets/Scripts/NewBehaviourScript.cs
+  artifactKey: Guid(dde64514b8c3b82419ab5585b1c6a456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/NewBehaviourScript.cs using Guid(dde64514b8c3b82419ab5585b1c6a456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2f7763b6c2cac487324d3cffb4ee62d') in 0.002382 seconds
+  Import took 0.007503 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.292293 seconds.
+  path: Assets/Scripts/GameManager.cs
+  artifactKey: Guid(dde64514b8c3b82419ab5585b1c6a456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GameManager.cs using Guid(dde64514b8c3b82419ab5585b1c6a456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81e8db2545de3738457f8ed9d50722a8') in 0.002160 seconds
+  Import took 0.007411 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 41.821235 seconds.
+  path: Assets/Scripts/PlayerBehavior.cs
+  artifactKey: Guid(e3e984a4d97bed0439271ce4b58f0fed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerBehavior.cs using Guid(e3e984a4d97bed0439271ce4b58f0fed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd805c08f68ac14738e70c269f138b1f3') in 0.002622 seconds
+  Import took 0.009945 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042608 seconds.
+  path: Assets/Scripts/PlayerBehavior.cs
+  artifactKey: Guid(e3e984a4d97bed0439271ce4b58f0fed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerBehavior.cs using Guid(e3e984a4d97bed0439271ce4b58f0fed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd805c08f68ac14738e70c269f138b1f3') in 0.005556 seconds
+  Import took 0.013071 seconds .
+
