@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class Rope : MonoBehaviour
     [SerializeField] private float _segmentSeparation;
     [SerializeField] private float _bondingForce;
     [SerializeField] private float _segmentDrag;
+    [SerializeField] private float _mass;
     private ArrayList _ropeSegments;
 
     void Start()
@@ -22,25 +24,31 @@ public class Rope : MonoBehaviour
             newSeg.transform.SetParent(transform);
             _ropeSegments.Add(newSeg);
 
+            var rb = newSeg.GetComponent<Rigidbody>();
             if (i > 0 && i < _segmentCount - 1)
             {
-                var rb = newSeg.AddComponent<Rigidbody>();
                 rb.drag = _segmentDrag;
+                rb.mass = 1.0f / _segmentCount;
+                rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             }
+
+            if (i == 0)
+                Destroy(rb);
         }
 
         for (int i = 0; i < _segmentCount; i++)
         {
-            if (i > 0 && i < _segmentCount - 1)
-            {
-                RopeSegment seg = ((GameObject)_ropeSegments[i]).GetComponent<RopeSegment>();
-                RopeSegment previousSeg = ((GameObject)_ropeSegments[i - 1]).GetComponent<RopeSegment>();
-                RopeSegment nextSeg = ((GameObject)_ropeSegments[i + 1]).GetComponent<RopeSegment>();
-                seg.PreviousSegment = previousSeg;
-                seg.NextSegment = nextSeg;
-                seg.SegmentSeparation = _segmentSeparation;
-                seg.BondingForce = _bondingForce;
-            }
+            RopeSegment seg = ((GameObject)_ropeSegments[i]).GetComponent<RopeSegment>();
+            RopeSegment previousSeg = null;
+            if(i > 0)
+                previousSeg = ((GameObject)_ropeSegments[i - 1]).GetComponent<RopeSegment>();
+            RopeSegment nextSeg = null;
+            if(i < _segmentCount - 1)
+                nextSeg = ((GameObject)_ropeSegments[i + 1]).GetComponent<RopeSegment>();
+            seg.PreviousSegment = previousSeg;
+            seg.NextSegment = nextSeg;
+            seg.SegmentSeparation = _segmentSeparation;
+            seg.BondingForce = _bondingForce;
         }
     }
 }
