@@ -21,7 +21,7 @@ public class SpikeMovement : MonoBehaviour
         if (horizontalMovement) 
         {
 
-            endPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + distance);
+            endPos = new Vector3(transform.position.x + distance, transform.position.y, transform.position.z);
             Debug.Log("Horizontal");
         
         }
