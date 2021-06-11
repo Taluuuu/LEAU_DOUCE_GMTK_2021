@@ -8,7 +8,7 @@ public class TwompDetector : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance._twompDetect.Invoke();
+            GameManager.Instance._onTwompDetect.Invoke();
         }
     }
 
@@ -16,7 +16,7 @@ public class TwompDetector : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance._twompNoDetect.Invoke();
+            GameManager.Instance._onTwompNoDetect.Invoke();
         }
     }
 }
