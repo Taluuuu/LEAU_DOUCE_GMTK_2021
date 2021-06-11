@@ -13,7 +13,7 @@ public class Twomp : MonoBehaviour
     private int nbrplayerUnder = 0;
 
     private Rigidbody _rb;
-    private Vector2D force;
+    private Vector2 force;
     private float movement;
 
     private bool armee = true;
@@ -54,7 +54,7 @@ public class Twomp : MonoBehaviour
             }
         }
 
-        if(armee = false)
+        if(!armee)
         {
             //going up
             force.y = 1;
