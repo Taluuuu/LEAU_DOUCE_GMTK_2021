@@ -22,57 +22,68 @@ public class Twomp : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _rb.drag = 1;
         _initialPosition = transform.position;
 
     }
 
-    private void FixedUpdate()
-    {
-        _rb.AddForce(force * movement);
-
-    }
-
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        force.y = 0;
+        _rb.velocity = new Vector3(0, 0, 0);
 
-        if (transform.position == _initialPosition)
+        if (transform.position.y >= _initialPosition.y)
+        {
+            //went back
+
             armee = true;
+            force.y = 0;
+
+        }
+
+        if (transform.position.y <= _detectorHeight)
+        {
+            //touch the ground
+          
+            armee = false;
+            force.y = 0;
+        }
 
         if (armee & falling)
         {
             //going down
+            
             force.y = -1;
             movement = _dropSpeed;
-
-
-            if(transform.position.y == _detectorHeight)
-            {
-                //touch the ground
-                armee = false;
-            }
         }
 
-        if(!armee)
+        if (!armee)
         {
             //going up
+           
             force.y = 1;
             movement = _upSpeed;
+
         }
 
+        _rb.AddForce(force * movement);
     }
 
-    private void TwompDetect()
+    public void TwompDetect()
     {
         nbrplayerUnder++;
         falling = true;
     }
 
-    private void TwompNoDetect()
+    public void TwompNoDetect()
     {
         nbrplayerUnder--;
         if(nbrplayerUnder == 0)
             falling = false;
+    }
+
+    public void SetDetectorHeight(Vector3 _newDetectorheight)
+    {
+        _detectorHeight = _newDetectorheight.y;
     }
 }
