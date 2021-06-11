@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Twomp : MonoBehaviour
 {
-    [SerializeField] private Transform _model;
     [SerializeField] private float _dropSpeed;
     [SerializeField] private float _upSpeed;
     [SerializeField] private float _detectorHeight;
@@ -15,14 +14,15 @@ public class Twomp : MonoBehaviour
 
     private Rigidbody _rb;
     private Vector2 force;
-    private float movement;
+    private float movement = 0;
 
     private bool armee = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        _initialPosition = _model.position;
+        _rb = GetComponent<Rigidbody>();
+        _initialPosition = transform.position;
 
     }
 
@@ -37,7 +37,7 @@ public class Twomp : MonoBehaviour
     {
         force.y = 0;
 
-        if (_model.position == _initialPosition)
+        if (transform.position == _initialPosition)
             armee = true;
 
         if (armee & falling)
@@ -47,7 +47,7 @@ public class Twomp : MonoBehaviour
             movement = _dropSpeed;
 
 
-            if(_model.position.y == _detectorHeight)
+            if(transform.position.y == _detectorHeight)
             {
                 //touch the ground
                 armee = false;
