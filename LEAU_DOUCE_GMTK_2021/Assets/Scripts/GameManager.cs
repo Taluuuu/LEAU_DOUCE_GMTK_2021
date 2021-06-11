@@ -20,32 +20,19 @@ public class GameManager
     private static GameManager _instance;
 
 
-    public int CoinsCollected { get => _coinsCollected; }
-    private int _coinsCollected = 0;
-
     // Events
-    public UnityEvent _onStartGame;
-    public UnityEvent _onCoinCollected;
-    public UnityEvent _onPlayerFuckingDying;
+    public UnityEvent _onTwompDetect;
+    public UnityEvent _onTwompNoDetect;
+    public UnityEvent _onHit;
 
     public GameManager()
     {
-        _onStartGame = new UnityEvent();
-        _onStartGame.AddListener(OnStartGame);
+        _onTwompDetect = new UnityEvent();
+        _onTwompDetect.AddListener(OnTwompDetect);
 
-        _onCoinCollected = new UnityEvent();
-        _onCoinCollected.AddListener(OnCoinCollected);
+        _onTwompNoDetect = new UnityEvent();
+        _onTwompNoDetect.AddListener(OnTwompNoDetect);
 
-        _onPlayerFuckingDying = new UnityEvent();
-    }
-
-    private void OnStartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetSceneByName("TestScene").handle);
-    }
-
-    private void OnCoinCollected()
-    {
-        _coinsCollected++;
+        _onHit = new UnityEvent();
     }
 }
