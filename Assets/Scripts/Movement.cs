@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _normalSpeed;
     [SerializeField] private bool _player1;
     [SerializeField] private bool _player2;
+    private bool _stuckToWall;
     private bool _jump;
     [SerializeField] private float _jumpingSpeed;
 
@@ -36,6 +37,15 @@ public class Movement : MonoBehaviour
             if (_player2)
             {
                 SautPerso2();
+            }
+        }
+
+        if (_stuckToWall)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                _rB.velocity = Vector3.zero;
+                _rB.Sleep();
             }
         }
 
@@ -113,6 +123,15 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             _jump = false;
+            _stuckToWall = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            _stuckToWall = false;
         }
     }
 
