@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool _player2;
     private bool _stuckToWall;
     private bool _jump;
+    private bool _ball = false;
     [SerializeField] private float _jumpingSpeed;
 
 
@@ -49,6 +50,14 @@ public class Movement : MonoBehaviour
             }
         }
 
+        if (_ball)
+        {
+            //faire du dommage aux ennemis --> autre classe
+            //devenir une boule --> autre classe
+
+            //bondir sur les murs
+        }
+
     }
 
     void Update()
@@ -60,11 +69,13 @@ public class Movement : MonoBehaviour
         if (_player1)
         {
             MovementPerso1();
+            AttackPerso1();
         }
 
         if (_player2)
         {
             MovementPerso2();
+            AttackPerso2();
         }
 
         _force.Normalize();
@@ -115,6 +126,22 @@ public class Movement : MonoBehaviour
         {
             _jump = true;
             _rB.AddForce(Vector2.up * _jumpingSpeed, ForceMode.Impulse);
+        }
+    }
+
+    private void AttackPerso1()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            _ball = true;
+        }
+    }
+
+    private void AttackPerso2()
+    {
+        if (Input.GetKey(KeyCode.L))
+        {
+            _ball = true;
         }
     }
 
