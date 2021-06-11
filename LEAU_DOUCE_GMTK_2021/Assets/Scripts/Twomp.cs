@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Twomp : MonoBehaviour
 {
+    [SerializeField] private Transform _model;
     [SerializeField] private float _dropSpeed;
     [SerializeField] private float _upSpeed;
     [SerializeField] private float _detectorHeight;
@@ -21,7 +22,6 @@ public class Twomp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance._playerHit.AddListener(PlayerHit);
         _initialPosition = _model.position;
 
     }
@@ -37,17 +37,17 @@ public class Twomp : MonoBehaviour
     {
         force.y = 0;
 
-        if (_model.position = _initialPosition)
+        if (_model.position == _initialPosition)
             armee = true;
 
-        if (armee = true & falling = true)
+        if (armee & falling)
         {
             //going down
             force.y = -1;
             movement = _dropSpeed;
 
 
-            if(_model.position = _detectorHeight)
+            if(_model.position.y == _detectorHeight)
             {
                 //touch the ground
                 armee = false;
@@ -72,7 +72,7 @@ public class Twomp : MonoBehaviour
     private void TwompNoDetect()
     {
         nbrplayerUnder--;
-        if(nbrplayerUnder = 0)
+        if(nbrplayerUnder == 0)
             falling = false;
     }
 }

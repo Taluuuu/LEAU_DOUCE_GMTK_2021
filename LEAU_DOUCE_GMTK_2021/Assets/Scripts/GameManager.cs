@@ -28,11 +28,8 @@ public class GameManager
     public GameManager()
     {
         _onTwompDetect = new UnityEvent();
-        _onTwompDetect.AddListener(OnTwompDetect);
 
         _onTwompNoDetect = new UnityEvent();
-        _onTwompNoDetect.AddListener(OnTwompNoDetect);
-
         _onHit = new UnityEvent();
     }
 }

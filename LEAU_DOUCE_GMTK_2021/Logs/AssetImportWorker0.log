@@ -100,3 +100,77 @@ Received Import Request.
 Start importing Assets/Scripts/Rope.cs using Guid(caf0fbf72d7fc9247b1f223be0e61214) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23b4cc6bd79abec048be0d0c035e6f5e') in 0.003449 seconds
   Import took 0.008202 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 392.656720 seconds.
+  path: Assets/Scripts/TwompPlayerDetector.cs
+  artifactKey: Guid(692906388abd1ee48ad54554dc35ca9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/TwompPlayerDetector.cs using Guid(692906388abd1ee48ad54554dc35ca9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03400019fd6ae25180e8c7fd10d8bb93') in 0.009744 seconds
+  Import took 0.016026 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007179 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.418 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.26 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2589 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.6 MB.
+System memory in use after: 115.8 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 3133.
+Total: 5.195800 ms (FindLiveObjects: 0.319100 ms CreateObjectMapping: 0.176200 ms MarkObjects: 4.661200 ms  DeleteObjects: 0.037300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 374.444890 seconds.
+  path: Assets/Scripts/GameManager.cs
+  artifactKey: Guid(dde64514b8c3b82419ab5585b1c6a456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GameManager.cs using Guid(dde64514b8c3b82419ab5585b1c6a456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f91d177e2fffaaa9c2ccfa49d1f126c7') in 0.011485 seconds
+  Import took 0.017424 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.834363 seconds.
+  path: Assets/Scripts/TwompPlayerDetector.cs
+  artifactKey: Guid(692906388abd1ee48ad54554dc35ca9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/TwompPlayerDetector.cs using Guid(692906388abd1ee48ad54554dc35ca9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25d5f53a7149a35fbd5e8683af871b20') in 0.002863 seconds
+  Import took 0.009187 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 31.008285 seconds.
+  path: Assets/Scripts/Twomp.cs
+  artifactKey: Guid(994b2f9ae4ce15543b1fb9f7b921ce7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Twomp.cs using Guid(994b2f9ae4ce15543b1fb9f7b921ce7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a8517b0b2c94ddbe44dfa628defab3a') in 0.005014 seconds
+  Import took 0.018431 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006479 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.75 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.441 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2589 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.8 MB.
+System memory in use after: 116.0 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 3136.
+Total: 6.414800 ms (FindLiveObjects: 0.523100 ms CreateObjectMapping: 0.253600 ms MarkObjects: 5.581800 ms  DeleteObjects: 0.052100 ms)
+
