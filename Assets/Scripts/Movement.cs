@@ -12,8 +12,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool _player2;
     private bool _stuckToWall;
     private bool _jump;
-    private bool _ball = false;
+    public bool _ball = false;
     [SerializeField] private float _jumpingSpeed;
+    [SerializeField] private PhysicMaterial _bouncy;
 
 
     private void Start()
@@ -55,14 +56,19 @@ public class Movement : MonoBehaviour
             //faire du dommage aux ennemis --> autre classe
             //devenir une boule --> autre classe
 
-            //bondir sur les murs
-
+            GetComponent<Collider>().material = _bouncy;
+            
+        }
+        else
+        {
+            GetComponent<Collider>().material = null;
         }
 
     }
 
     void Update()
     {
+
         //Determiner les forces
         _force.x = 0;
         _force.y = 0;
@@ -106,6 +112,7 @@ public class Movement : MonoBehaviour
             _force.x -= 1.0f;
         }
 
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             _force.x += 1.0f;
@@ -134,8 +141,11 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
+
             _ball = true;
         }
+        else
+            _ball = false;
     }
 
     private void AttackPerso2()
@@ -144,6 +154,8 @@ public class Movement : MonoBehaviour
         {
             _ball = true;
         }
+        else
+            _ball = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -159,6 +171,7 @@ public class Movement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
+            _jump = true;
             _stuckToWall = false;
         }
     }

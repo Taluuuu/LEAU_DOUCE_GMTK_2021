@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4771167440327071708}
   - component: {fileID: 4771167440327071711}
   - component: {fileID: 4771167440327071710}
-  - component: {fileID: 4771167440327071682}
+  - component: {fileID: 9095960224255791985}
+  - component: {fileID: -4764855917283501607}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -96,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4771167440327071682
+--- !u!114 &9095960224255791985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +107,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 4771167440327071705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbf6e533cb8fff14cbcb8a72b36be9f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 692906388abd1ee48ad54554dc35ca9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTethered: 1
+--- !u!54 &-4764855917283501607
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771167440327071705}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

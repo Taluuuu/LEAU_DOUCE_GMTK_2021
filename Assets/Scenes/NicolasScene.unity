@@ -167,6 +167,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -289,6 +290,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -398,6 +400,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -604,6 +607,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -671,7 +675,9 @@ MonoBehaviour:
   _normalSpeed: 15
   _player1: 1
   _player2: 0
+  _ball: 0
   _jumpingSpeed: 10
+  _bouncy: {fileID: 0}
 --- !u!1 &1432747208
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,6 +853,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -935,7 +942,9 @@ MonoBehaviour:
   _normalSpeed: 15
   _player1: 0
   _player2: 1
+  _ball: 0
   _jumpingSpeed: 10
+  _bouncy: {fileID: 0}
 --- !u!54 &2108563918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -976,6 +985,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1091,5 +1101,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingSpike
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031307519654490475, guid: cb318367922a83944bf54fa3021639f4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cb318367922a83944bf54fa3021639f4, type: 3}

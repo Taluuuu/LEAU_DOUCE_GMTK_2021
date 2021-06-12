@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //movement._ball (qui est un bool) pour savoir si le joueur est ball ou non
     }
 
     // Update is called once per frame
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
 
     public void Hit()
     {
+        
         Destroy(gameObject);
     }
 }
