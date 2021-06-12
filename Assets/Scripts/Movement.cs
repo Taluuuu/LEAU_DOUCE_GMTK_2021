@@ -43,10 +43,30 @@ public class Movement : MonoBehaviour
 
         if (_stuckToWall)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (_player1)
             {
-                _rB.velocity = Vector3.zero;
-                _rB.Sleep();
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    _rB.velocity = Vector3.zero;
+                    _rB.Sleep();
+                }
+                else
+                {
+                    _rB.WakeUp();
+                }
+            }
+
+            if (_player2)
+            {
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    _rB.velocity = Vector3.zero;
+                    _rB.Sleep();
+                }
+                else
+                {
+                    _rB.WakeUp();
+                }
             }
         }
 
@@ -102,31 +122,40 @@ public class Movement : MonoBehaviour
 
     private void MovementPerso1()
     {
-
-        if (Input.GetKey(KeyCode.A))
+        if (!Physics.Raycast(_rB.position, Vector3.left, 0.8f, 1 << 3))
         {
-            _force.x -= 1.0f;
+            if (Input.GetKey(KeyCode.A))
+            {
+                _force.x -= 1.0f;
+            }
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (!Physics.Raycast(_rB.position, Vector3.right, 0.8f, 1 << 3))
         {
-            _force.x += 1.0f;
+            if (Input.GetKey(KeyCode.D))
+            {
+                _force.x += 1.0f;
+            }
         }
 
     }
 
     private void MovementPerso2()
     {
-
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (!Physics.Raycast(_rB.position, Vector3.left, 0.8f, 1 << 3))
         {
-            _force.x -= 1.0f;
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                _force.x -= 1.0f;
+            }
         }
 
-
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (!Physics.Raycast(_rB.position, Vector3.right, 0.8f, 1 << 3))
         {
-            _force.x += 1.0f;
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                _force.x += 1.0f;
+            }
         }
     }
 
