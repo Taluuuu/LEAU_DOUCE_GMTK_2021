@@ -142,7 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd46a01e7418a7449538a777443608b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerList: []
+  Range: 50
+  WaitTime: 1.5
+  xspeed: 1.5
+  yspeed: 6
+  minimumyspeed: 0.5
 --- !u!54 &1007683412289342601
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,5 +175,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692906388abd1ee48ad54554dc35ca9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1: {fileID: 7137148591954802040, guid: 7e32f4ab8e28b1f4a94eebf35e3da78f, type: 3}
-  Player2: {fileID: 5096177056818562276, guid: 5448127ab07554149a74e2bb94666208, type: 3}

@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b0485eb8298d34b8915cafc991ba6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Direction: {x: 0, y: 0, z: 0}
-  switched: 0
+  speed: 5
+  initial: 1
 --- !u!114 &1327193626280103741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,8 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692906388abd1ee48ad54554dc35ca9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1: {fileID: 7137148591954802040, guid: 7e32f4ab8e28b1f4a94eebf35e3da78f, type: 3}
-  Player2: {fileID: 5096177056818562276, guid: 5448127ab07554149a74e2bb94666208, type: 3}
 --- !u!1 &5610636015705969419
 GameObject:
   m_ObjectHideFlags: 0
