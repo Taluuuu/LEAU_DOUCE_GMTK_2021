@@ -629,9 +629,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\n\nCharles Thiboutot-Lessard\nJustine Ouellette\n\nSarah Heng\n\nCharles-Hubert
     Parent\n\nCharles Thiboutot-Lessard\nLudovic Brillon\n\nLudovic Brillon\n\xC9tienne
-    Cadotte\nR\xE9mi C\xF4t\xE9\nNicolas Overllides\n\nLudovic Brillon\n\n\n\n\xC9tienne
+    Cadotte\nR\xE9mi C\xF4t\xE9\nNicolas Ollervides\n\nLudovic Brillon\n\n\n\n\xC9tienne
     Cadotte\nCharles-Antoine Lord\nR\xE9mi C\xF4t\xE9\nJustine Ouellette\nNicolas
-    Overllides\n\n\n"
+    Ollervides\n\n\n"
 --- !u!222 &1723341660
 CanvasRenderer:
   m_ObjectHideFlags: 0
