@@ -12,11 +12,9 @@ public class Rope : MonoBehaviour
     [SerializeField] private Transform _p1;
     [SerializeField] private Transform _p2;
 
-    [SerializeField] private GameObject _ropeCollider;
-
     private LineRenderer _lineRenderer;
     private List<RopeSegment> _ropeSegments = new List<RopeSegment>();
-    private List<Rigidbody> _ropeColliders = new List<Rigidbody>();
+    private List<SphereCollider> _fuckingColliders = new List<SphereCollider>();
 
 
     void Start()
@@ -29,11 +27,11 @@ public class Rope : MonoBehaviour
 
         for (int i = 0; i < _segmentCount; i++)
         {
-            var segment = Instantiate(_ropeCollider, ropeStartPoint, Quaternion.identity);
-            segment.AddComponent<RopeColliderScript>().Index = i;
-            segment.GetComponent<RopeColliderScript>().Rope = this;
-            _ropeColliders.Add(segment.GetComponent<Rigidbody>());
             _ropeSegments.Add(new RopeSegment(ropeStartPoint));
+            var col = gameObject.AddComponent<SphereCollider>();
+            col.center = ropeStartPoint;
+            col.radius = 0.05f;
+            _fuckingColliders.Add(col);
             ropeStartPoint += direction * delta;
         }
     }
@@ -75,36 +73,34 @@ public class Rope : MonoBehaviour
             ApplyConstraint();
         }
 
+        // Loop through all segments
         for (int i = 0; i < _segmentCount; i++)
         {
-            bool detectedACollision = false;
-            Collider[] colliders = Physics.OverlapSphere(_ropeColliders[i].transform.position, 0.05f);
-            for (int c = 0; c < colliders.Length; c++)
+            var curCollider = _fuckingColliders[i];
+            // Set collider's initial position to that of the rope segment
+            curCollider.center = _ropeSegments[i].posNow;
+            // Get all collisions with the segment's sphere collider
+            var encounters = Physics.OverlapSphere(curCollider.center, curCollider.radius);
+            // Loop through all encountered colliders
+            for(int c = 0; c < encounters.Length; c++)
             {
-                if (_ropeColliders[i].gameObject.GetComponent<Collider>() != colliders[c])
+                var encounter = encounters[c];
+                if(encounter != curCollider) // Skip itself
                 {
-                    detectedACollision = true;
-                    Vector3 dir;
-                    float len;
+                    // Calculate new position
                     Physics.ComputePenetration(
-                        _ropeColliders[i].gameObject.GetComponent<Collider>(), _ropeColliders[i].transform.position, _ropeColliders[i].rotation, 
-                        colliders[c], colliders[c].gameObject.transform.position, colliders[c].gameObject.transform.rotation, out dir, out len);
+                        curCollider, transform.position, curCollider.transform.rotation, 
+                        encounter, encounter.transform.position, encounter.transform.rotation, 
+                        out Vector3 dir, out float dis);
 
-                    _ropeColliders[i].position += dir * len;
+                    curCollider.center += dir * dis;
                 }
             }
 
-            if (detectedACollision)
-            {
-                var currentSegment = _ropeSegments[i];
-                currentSegment.posOld = currentSegment.posNow;
-                currentSegment.posNow = _ropeColliders[i].transform.position;
-                _ropeSegments[i] = currentSegment;
-            }
-            else
-            {
-                _ropeColliders[i].transform.position = _ropeSegments[i].posNow;
-            }
+            // Apply position to rope
+            var curSeg = _ropeSegments[i];
+            curSeg.posNow = curCollider.center;
+            _ropeSegments[i] = curSeg;
         }
     }
 
@@ -114,8 +110,9 @@ public class Rope : MonoBehaviour
         firstSegment.posNow = _p1.position;
         _ropeSegments[0] = firstSegment;
 
+        RopeSegment endSegment = _ropeSegments[_segmentCount - 1];
         firstSegment.posNow = _p2.position;
-        _ropeSegments[_segmentCount - 1] = firstSegment;
+        _ropeSegments[_segmentCount - 1] = endSegment;
 
         for (int i = 0; i < _segmentCount - 1; i++)
         {
