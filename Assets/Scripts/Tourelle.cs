@@ -25,8 +25,6 @@ public class Tourelle : MonoBehaviour
 
     private float _timeSinceShoot;
 
-
-
     private UnityEngine.GameObject[] Players;
 
     // Start is called before the first frame update
