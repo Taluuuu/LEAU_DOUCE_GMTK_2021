@@ -20,7 +20,6 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         _rB = GetComponent<Rigidbody>();
-        //camera
     }
 
     private void FixedUpdate()
@@ -73,6 +72,8 @@ public class Movement : MonoBehaviour
         _force.x = 0;
         _force.y = 0;
 
+        Jump();
+
         if (_player1)
         {
             MovementPerso1();
@@ -86,6 +87,16 @@ public class Movement : MonoBehaviour
         }
 
         _force.Normalize();
+
+        if (_force.x == 1)
+        {
+            _rB.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        if (_force.x == -1)
+        {
+            _rB.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
 
     }
 
@@ -158,20 +169,26 @@ public class Movement : MonoBehaviour
             _ball = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Jump()
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (Physics.Raycast(_rB.position, Vector3.down, 0.8f, 1 << 3))
         {
             _jump = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 3)
+        {
             _stuckToWall = true;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.layer == 3)
         {
-            _jump = true;
             _stuckToWall = false;
         }
     }

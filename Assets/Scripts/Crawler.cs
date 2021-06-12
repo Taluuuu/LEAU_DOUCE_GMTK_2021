@@ -28,13 +28,13 @@ public class Crawler : MonoBehaviour
             if (Physics.Raycast(rb.position + Quaternion.Euler(0, 0, -90) * Direction * (-0.1f+rb.transform.lossyScale.x/2) - Direction * (rb.transform.lossyScale.x / 2), Quaternion.Euler(0, 0, -90) * Direction, 0.3f, 1 << 3)==false)
             {
                 Direction = Quaternion.Euler(0, 0, -90) * Direction;
-
+                rb.transform.rotation = Quaternion.Euler(0, 0, -90) * rb.transform.rotation;
                 StartCoroutine(Wait());
             }
             if (Physics.Raycast(rb.position + Direction  *(-0.1f + rb.transform.lossyScale.x/2), Direction, 0.3f, 1 << 3)==true)
             {
                 Direction = Quaternion.Euler(0, 0, 90) * Direction;
-
+                rb.transform.rotation = Quaternion.Euler(0, 0, 90) * rb.transform.rotation;
                 StartCoroutine(Wait());
             }
         }
