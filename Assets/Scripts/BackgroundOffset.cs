@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Background : MonoBehaviour
+public class BackgroundOffset : MonoBehaviour
 {
     private float smoothSpeed;
     private Camera Cam;
@@ -11,13 +11,13 @@ public class Background : MonoBehaviour
     void Awake()
     {
         Cam = FindObjectOfType<Camera>();
-        smoothSpeed = 0.125f;
+        smoothSpeed = 0.01f;
     }
     void Update()
     {
         if (PreviousCam != Cam.transform.position.x)
         {
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, (Cam.transform.position-transform.position)*Ratio+transform.position, smoothSpeed);
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, new Vector3((Cam.transform.position.x-transform.position.x)*Ratio+transform.position.x,transform.position.y,transform.position.z), smoothSpeed);
             transform.position = smoothedPosition;
             PreviousCam = Cam.transform.position.x;
         }
