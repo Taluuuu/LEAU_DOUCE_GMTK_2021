@@ -56,6 +56,7 @@ public class Movement : MonoBehaviour
             //devenir une boule --> autre classe
 
             //bondir sur les murs
+
         }
 
     }
