@@ -10,8 +10,8 @@ public class Rope : MonoBehaviour
     [SerializeField] private float _ropeWidth = 0.1f;
     [SerializeField] private bool _elastique = false;
 
-    [SerializeField] private Transform _p1;
-    [SerializeField] private Transform _p2;
+    [SerializeField] private Rigidbody _p1;
+    [SerializeField] private Rigidbody _p2;
     [SerializeField] private bool _p1Stuck;
     [SerializeField] private bool _p2Stuck;
 
@@ -105,6 +105,8 @@ public class Rope : MonoBehaviour
             curSeg.posNow = curCollider.center;
             _ropeSegments[i] = curSeg;
         }
+
+        // Add forces to tied objects (if they should)
     }
 
     private void ApplyConstraint()
