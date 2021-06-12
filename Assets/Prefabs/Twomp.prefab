@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3834acb19ae20c47acfd26425fb0152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _twomp: {fileID: 0}
+  _twomp: {fileID: 673000461914958150}
 --- !u!54 &2532747057546481769
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -269,7 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692906388abd1ee48ad54554dc35ca9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  Player1: {fileID: 7137148591954802040, guid: 7e32f4ab8e28b1f4a94eebf35e3da78f, type: 3}
+  Player2: {fileID: 5096177056818562276, guid: 5448127ab07554149a74e2bb94666208, type: 3}
 --- !u!1 &3643219763174252135
 GameObject:
   m_ObjectHideFlags: 0
