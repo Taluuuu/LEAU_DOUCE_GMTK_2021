@@ -13,7 +13,7 @@ public class SpikeBehaviour : MonoBehaviour
         if (other.CompareTag("Player") && !isTethered) 
         {
 
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
             
         
         
