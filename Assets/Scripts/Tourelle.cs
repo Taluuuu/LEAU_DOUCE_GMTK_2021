@@ -25,8 +25,6 @@ public class Tourelle : MonoBehaviour
 
     private float _timeSinceShoot;
 
-
-
     private UnityEngine.GameObject[] Players;
 
     // Start is called before the first frame update
@@ -121,6 +119,22 @@ public class Tourelle : MonoBehaviour
             _timeSinceShoot = 0;
             ProjectileTourelle _proj = Instantiate(_projectileTourelle, transform.position + _ray1.direction.normalized * 2, transform.rotation);
 
+            if (_ray1.direction.x > 0) 
+            {
+
+                transform.Rotate(0, -180, 0);
+            
+            
+            }
+
+            if (_ray1.direction.x < 0) 
+            {
+
+
+                transform.Rotate(0, 180, 0);
+            
+            }
+
             _proj.GetComponent<Rigidbody>().velocity = _ray1.direction * _projSpeed;
         }
     }
@@ -131,7 +145,23 @@ public class Tourelle : MonoBehaviour
         {
             _timeSinceShoot = 0;
 
-            ProjectileTourelle _proj = Instantiate(_projectileTourelle, transform.position + _ray1.direction.normalized * 2, transform.rotation);
+            ProjectileTourelle _proj = Instantiate(_projectileTourelle, transform.position + _ray2.direction.normalized * 2, transform.rotation);
+
+            if (_ray2.direction.x > 0)
+            {
+
+                transform.Rotate(0, -180, 0);
+
+
+            }
+
+            if (_ray2.direction.x < 0)
+            {
+
+
+                transform.Rotate(0, 180, 0);
+
+            }
 
             _proj.GetComponent<Rigidbody>().velocity = _ray2.direction * _projSpeed;
         }
