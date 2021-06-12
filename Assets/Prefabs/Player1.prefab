@@ -77,7 +77,9 @@ MonoBehaviour:
   _normalSpeed: 30
   _player1: 1
   _player2: 0
+  _ball: 0
   _jumpingSpeed: 5
+  _bouncy: {fileID: 13400000, guid: 0725ec8003dbe2b4ea6185270a4b844a, type: 2}
 --- !u!1 &4209875514815880528
 GameObject:
   m_ObjectHideFlags: 0

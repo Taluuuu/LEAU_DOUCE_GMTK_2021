@@ -42,7 +42,7 @@ public class Tourelle : MonoBehaviour
         TestVew1();
         TestVew2();
 
-        if(_meetPlayer1 & _meetPlayer2)
+        if(_meetPlayer1 && _meetPlayer2)
         {
 
             if (_range1.magnitude <= _range2.magnitude)
@@ -109,7 +109,7 @@ public class Tourelle : MonoBehaviour
         if (_timeSinceShoot >= _shootSpeed)
         {
             _timeSinceShoot = 0;
-            ProjectileTourelle _proj = Instantiate(_projectileTourelle, transform.position + _ray1.direction.normalized*2, transform.rotation);
+            ProjectileTourelle _proj = Instantiate(_projectileTourelle, transform.position + _ray1.direction.normalized * 2, transform.rotation);
 
             _proj.GetComponent<Rigidbody>().velocity = _ray1.direction * _projSpeed;
         }

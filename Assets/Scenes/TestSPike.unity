@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1461847347424247534, guid: 7e32f4ab8e28b1f4a94eebf35e3da78f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -9.3
       objectReference: {fileID: 0}
     - target: {fileID: 1461847347424247534, guid: 7e32f4ab8e28b1f4a94eebf35e3da78f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 185545211}
   - component: {fileID: 185545210}
   - component: {fileID: 185545209}
+  - component: {fileID: 185545212}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -268,12 +269,44 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185545208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &185545212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185545208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &592563923 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3028873695421201682, guid: 7e32f4ab8e28b1f4a94eebf35e3da78f, type: 3}
@@ -309,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7836614788490203998, guid: 5448127ab07554149a74e2bb94666208, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.7
+      value: -2.33
       objectReference: {fileID: 0}
     - target: {fileID: 7836614788490203998, guid: 5448127ab07554149a74e2bb94666208, type: 3}
       propertyPath: m_LocalPosition.y
@@ -425,13 +458,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tourelle
       objectReference: {fileID: 0}
+    - target: {fileID: 4523596966623024564, guid: 85e68cb27144b1643a1a4cca0457af21, type: 3}
+      propertyPath: _player1
+      value: 
+      objectReference: {fileID: 1267020470}
+    - target: {fileID: 4523596966623024564, guid: 85e68cb27144b1643a1a4cca0457af21, type: 3}
+      propertyPath: _player2
+      value: 
+      objectReference: {fileID: 56170595}
     - target: {fileID: 8674203458512470924, guid: 85e68cb27144b1643a1a4cca0457af21, type: 3}
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8674203458512470924, guid: 85e68cb27144b1643a1a4cca0457af21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.19
+      value: -22.07
       objectReference: {fileID: 0}
     - target: {fileID: 8674203458512470924, guid: 85e68cb27144b1643a1a4cca0457af21, type: 3}
       propertyPath: m_LocalPosition.y

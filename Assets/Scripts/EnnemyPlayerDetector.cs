@@ -9,7 +9,12 @@ public class EnnemyPlayerDetector : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().Hit();
+            if(other.GetComponent<Movement>()._ball)
+            {
+                Destroy(gameObject);
+            }
+            else
+                other.GetComponent<Player>().Hit();
         }
     }
 }

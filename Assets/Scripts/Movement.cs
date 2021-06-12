@@ -58,7 +58,6 @@ public class Movement : MonoBehaviour
 
             GetComponent<Collider>().material = _bouncy;
             
-            _ball = false;
         }
         else
         {
@@ -113,6 +112,7 @@ public class Movement : MonoBehaviour
             _force.x -= 1.0f;
         }
 
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             _force.x += 1.0f;
@@ -141,8 +141,11 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
+
             _ball = true;
         }
+        else
+            _ball = false;
     }
 
     private void AttackPerso2()
@@ -151,6 +154,8 @@ public class Movement : MonoBehaviour
         {
             _ball = true;
         }
+        else
+            _ball = false;
     }
 
     private void OnCollisionEnter(Collision collision)
