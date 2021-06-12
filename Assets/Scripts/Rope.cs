@@ -14,7 +14,7 @@ public class Rope : MonoBehaviour
 
     private LineRenderer _lineRenderer;
     private List<RopeSegment> _ropeSegments = new List<RopeSegment>();
-    private List<SphereCollider> _fuckingColliders = new List<SphereCollider>();
+    private List<SphereCollider> _ropeColliders = new List<SphereCollider>();
 
 
     void Start()
@@ -31,7 +31,7 @@ public class Rope : MonoBehaviour
             var col = gameObject.AddComponent<SphereCollider>();
             col.center = ropeStartPoint;
             col.radius = 0.05f;
-            _fuckingColliders.Add(col);
+            _ropeColliders.Add(col);
             ropeStartPoint += direction * delta;
         }
     }
@@ -55,7 +55,7 @@ public class Rope : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Simulate shit
+        // Simulate
         Vector2 forceGravity = new Vector2(0f, -1.5f);
 
         for (int i = 1; i < _segmentCount; i++)
@@ -76,7 +76,7 @@ public class Rope : MonoBehaviour
         // Loop through all segments
         for (int i = 0; i < _segmentCount; i++)
         {
-            var curCollider = _fuckingColliders[i];
+            var curCollider = _ropeColliders[i];
             // Set collider's initial position to that of the rope segment
             curCollider.center = _ropeSegments[i].posNow;
             // Get all collisions with the segment's sphere collider
@@ -93,7 +93,7 @@ public class Rope : MonoBehaviour
                         encounter, encounter.transform.position, encounter.transform.rotation, 
                         out Vector3 dir, out float dis);
 
-                    curCollider.center += dir * dis;
+                    curCollider.center += dir * dis * 0.9f;
                 }
             }
 
@@ -112,7 +112,7 @@ public class Rope : MonoBehaviour
 
         RopeSegment endSegment = _ropeSegments[_segmentCount - 1];
         firstSegment.posNow = _p2.position;
-        _ropeSegments[_segmentCount - 1] = endSegment;
+        _ropeSegments[_segmentCount - 1] = true ? firstSegment : endSegment;
 
         for (int i = 0; i < _segmentCount - 1; i++)
         {
@@ -146,13 +146,5 @@ public class Rope : MonoBehaviour
                 _ropeSegments[i + 1] = secondSeg;
             }
         }
-    }
-
-    public void RopeSegmentCollision(int index)
-    {
-        //var currentSegment = _ropeSegments[index];
-        //currentSegment.posOld = currentSegment.posNow;
-        //currentSegment.posNow = _ropeColliders[index].transform.position;
-        //_ropeSegments[index] = currentSegment;
     }
 }
