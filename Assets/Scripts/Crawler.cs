@@ -17,7 +17,6 @@ public class Crawler : MonoBehaviour
     {
         switched = false;
         Direction = Vector3.right;
-        Debug.Log(Quaternion.Euler(0, 0, -90) * Direction);
     }
 
     void Update()
