@@ -5,87 +5,130 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-    [SerializeField] private int _segmentCount;
-    [SerializeField] private GameObject _ropeSegmentPrefab;
-    [SerializeField] private float _segmentSeparation;
-    [SerializeField] private float _bondingForce;
-    [SerializeField] private float _segmentDrag;
-    [SerializeField] private float _mass;
+    [SerializeField] private float _segmentLength = 0.25f;
+    [SerializeField] private int _segmentCount = 35;
+    [SerializeField] private float _ropeWidth = 0.1f;
 
-    [SerializeField] private GameObject p1;
-    [SerializeField] private GameObject p2;
-    [SerializeField] private bool stuck1;
-    [SerializeField] private bool stuck2;
+    [SerializeField] private Transform _p1;
+    [SerializeField] private Transform _p2;
 
-    private ArrayList _ropeSegments;
+    [SerializeField] private GameObject _ropeCollider;
+
+    private LineRenderer _lineRenderer;
+    private List<RopeSegment> _ropeSegments = new List<RopeSegment>();
+    private List<Rigidbody> _ropeColliders = new List<Rigidbody>();
+
 
     void Start()
     {
-        _ropeSegments = new ArrayList(_segmentCount);
+        _lineRenderer = GetComponent<LineRenderer>();
+        Vector3 ropeStartPoint = _p1.position;
+
+        float delta = (_p2.position - _p1.position).magnitude / _segmentCount;
+        Vector3 direction = (_p2.position - _p1.position).normalized;
 
         for (int i = 0; i < _segmentCount; i++)
         {
-            var position = new Vector3(i * _segmentSeparation, 0.0f) + transform.position;
-            var newSeg = Instantiate(_ropeSegmentPrefab, position, Quaternion.identity);
-            newSeg.transform.SetParent(transform);
-            _ropeSegments.Add(newSeg);
-
-            var rb = newSeg.GetComponent<Rigidbody>();
-            if (i > 0 && i < _segmentCount - 1)
-            {
-                rb.drag = _segmentDrag;
-                rb.mass = 1.0f / _segmentCount;
-                rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-            }
-
-            //if (i == 0)
-            //    Destroy(rb);
-
-            //if (i == _segmentCount - 1)
-            //    Destroy(rb);
-        }
-
-        for (int i = 0; i < _segmentCount; i++)
-        {
-            RopeSegment seg = ((GameObject)_ropeSegments[i]).GetComponent<RopeSegment>();
-            RopeSegment previousSeg = null;
-            if(i > 0)
-                previousSeg = ((GameObject)_ropeSegments[i - 1]).GetComponent<RopeSegment>();
-            RopeSegment nextSeg = null;
-            if(i < _segmentCount - 1)
-                nextSeg = ((GameObject)_ropeSegments[i + 1]).GetComponent<RopeSegment>();
-            seg.PreviousSegment = previousSeg;
-            seg.NextSegment = nextSeg;
-            seg.SegmentSeparation = _segmentSeparation;
-            seg.BondingForce = _bondingForce;
+            var segment = Instantiate(_ropeCollider, ropeStartPoint, Quaternion.identity);
+            segment.AddComponent<RopeColliderScript>().Index = i;
+            segment.GetComponent<RopeColliderScript>().Rope = this;
+            _ropeColliders.Add(segment.GetComponent<Rigidbody>());
+            _ropeSegments.Add(new RopeSegment(ropeStartPoint));
+            ropeStartPoint += direction * delta;
         }
     }
 
-    private void Update()
+    void Update()
     {
-        GameObject first = (GameObject)_ropeSegments[0];
-        GameObject last = (GameObject)_ropeSegments[_segmentCount - 1];
+        // Draw line
+        float lineWidth = _ropeWidth;
+        _lineRenderer.startWidth = lineWidth;
+        _lineRenderer.endWidth = lineWidth;
 
-        if (!stuck1)
+        Vector3[] ropePositions = new Vector3[_segmentCount];
+        for (int i = 0; i < _segmentCount; i++)
         {
-            p1.transform.position = first.transform.position;
-            first.GetComponent<Rigidbody>().WakeUp();
-        }
-        else
-        {
-            first.transform.position = p1.transform.position;
-            first.GetComponent<Rigidbody>().Sleep();
+            ropePositions[i] = _ropeSegments[i].posNow;
         }
 
-        if (!stuck2)
+        _lineRenderer.positionCount = ropePositions.Length;
+        _lineRenderer.SetPositions(ropePositions);
+    }
+
+    private void FixedUpdate()
+    {
+        // Simulate shit
+        Vector2 forceGravity = new Vector2(0f, -1.5f);
+
+        for (int i = 1; i < _segmentCount; i++)
         {
-            p2.transform.position = last.transform.position;
-            last.GetComponent<Rigidbody>().WakeUp();
+            RopeSegment firstSegment = _ropeSegments[i];
+            Vector2 velocity = firstSegment.posNow - firstSegment.posOld;
+            firstSegment.posOld = firstSegment.posNow;
+            firstSegment.posNow += velocity;
+            firstSegment.posNow += forceGravity * Time.fixedDeltaTime;
+            _ropeSegments[i] = firstSegment;
         }
-        else
+
+        for (int i = 0; i < 50; i++)
         {
-            last.transform.position = p2.transform.position;
-            last.GetComponent<Rigidbody>().Sleep();
+            ApplyConstraint();
         }
+
+        for (int i = 0; i < _segmentCount; i++)
+        {
+            _ropeColliders[i].transform.position = _ropeSegments[i].posNow;
+        }
+    }
+
+    private void ApplyConstraint()
+    {
+        RopeSegment firstSegment = _ropeSegments[0];
+        firstSegment.posNow = _p1.position;
+        _ropeSegments[0] = firstSegment;
+
+        firstSegment.posNow = _p2.position;
+        _ropeSegments[_segmentCount - 1] = firstSegment;
+
+        for (int i = 0; i < _segmentCount - 1; i++)
+        {
+            RopeSegment firstSeg = _ropeSegments[i];
+            RopeSegment secondSeg = _ropeSegments[i + 1];
+
+            float dist = (firstSeg.posNow - secondSeg.posNow).magnitude;
+            float error = Mathf.Abs(dist - _segmentLength);
+            Vector2 changeDir = Vector2.zero;
+
+            if (dist > _segmentLength)
+            {
+                changeDir = (firstSeg.posNow - secondSeg.posNow).normalized;
+            }
+            else if (dist < _segmentLength)
+            {
+                changeDir = (secondSeg.posNow - firstSeg.posNow).normalized;
+            }
+
+            Vector2 changeAmount = changeDir * error;
+            if (i != 0)
+            {
+                firstSeg.posNow -= changeAmount * 0.5f;
+                _ropeSegments[i] = firstSeg;
+                secondSeg.posNow += changeAmount * 0.5f;
+                _ropeSegments[i + 1] = secondSeg;
+            }
+            else
+            {
+                secondSeg.posNow += changeAmount;
+                _ropeSegments[i + 1] = secondSeg;
+            }
+        }
+    }
+
+    public void RopeSegmentCollision(int index)
+    {
+        var currentSegment = _ropeSegments[index];
+        currentSegment.posOld = currentSegment.posNow;
+        currentSegment.posNow = _ropeColliders[index].transform.position;
+        _ropeSegments[index] = currentSegment;
     }
 }
