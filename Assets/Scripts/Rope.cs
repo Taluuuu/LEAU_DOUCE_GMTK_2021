@@ -113,10 +113,11 @@ public class Rope : MonoBehaviour
         }
 
         // Add forces to tied rigidbodies
+        var currentRopeLength = CalculateRopeLength();
+        var ropeExtension = currentRopeLength - _segmentCount * _segmentLength;
+        Debug.Log(ropeExtension);
         if (_applyForceBetweenObjects)
         {
-            var currentRopeLength = CalculateRopeLength();
-            var ropeExtension = currentRopeLength - _segmentCount * _segmentLength;
             if (_p1Stuck)
             {
                 _p1.AddForce((_ropeSegments[1].posNow - _ropeSegments[0].posNow).normalized * _force * ropeExtension);

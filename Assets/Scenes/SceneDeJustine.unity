@@ -274,6 +274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalSpeed: 18
+  _attackTime: 0
+  _attackCooldown: 0
   _player1: 0
   _player2: 1
   _ball: 0
@@ -403,11 +405,11 @@ PrefabInstance:
       objectReference: {fileID: 223251901}
     - target: {fileID: 8115569976163422888, guid: 2a34e64e44306694687abf830fa1483b, type: 3}
       propertyPath: _force
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8115569976163422888, guid: 2a34e64e44306694687abf830fa1483b, type: 3}
       propertyPath: _ropeWidth
-      value: 0.15
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8115569976163422888, guid: 2a34e64e44306694687abf830fa1483b, type: 3}
       propertyPath: _segmentCount
@@ -415,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8115569976163422888, guid: 2a34e64e44306694687abf830fa1483b, type: 3}
       propertyPath: _segmentLength
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8115569976163422888, guid: 2a34e64e44306694687abf830fa1483b, type: 3}
       propertyPath: _applyForceBetweenObjects
@@ -1271,6 +1273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalSpeed: 18
+  _attackTime: 0
+  _attackCooldown: 0
   _player1: 1
   _player2: 0
   _ball: 0
