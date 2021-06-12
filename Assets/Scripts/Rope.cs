@@ -106,7 +106,24 @@ public class Rope : MonoBehaviour
             _ropeSegments[i] = curSeg;
         }
 
-        // Add forces to tied objects (if they should)
+        // Add forces to tied rigidbodies
+        if(_p1Stuck)
+        {
+
+        }
+        else
+        {
+            _p1.position = _ropeSegments[0].posNow;
+        }
+
+        if(_p2Stuck)
+        {
+
+        }
+        else
+        {
+            _p2.position = _ropeSegments[_segmentCount - 1].posNow;
+        }
     }
 
     private void ApplyConstraint()
