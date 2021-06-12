@@ -47,7 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd46a01e7418a7449538a777443608b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerList: []
+  Range: 10
+  WaitTime: 3
+  xspeed: 2
+  yspeed: 2
+  minimumyspeed: 3
 --- !u!114 &2959455592132289439
 MonoBehaviour:
   m_ObjectHideFlags: 0
