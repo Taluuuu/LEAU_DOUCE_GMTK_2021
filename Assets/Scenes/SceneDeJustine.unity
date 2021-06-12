@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 223251902}
   - component: {fileID: 223251901}
   - component: {fileID: 223251900}
+  - component: {fileID: 223251906}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -242,7 +243,9 @@ MonoBehaviour:
   _normalSpeed: 15
   _player1: 0
   _player2: 1
-  _jumpingSpeed: 10
+  _ball: 0
+  _jumpingSpeed: 7
+  _bouncy: {fileID: 13400000, guid: 0725ec8003dbe2b4ea6185270a4b844a, type: 2}
 --- !u!54 &223251901
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -251,7 +254,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223251899}
   serializedVersion: 2
-  m_Mass: 1.5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -284,6 +287,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -336,6 +340,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &223251906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223251899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e984a4d97bed0439271ce4b58f0fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &683256837
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +488,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -567,6 +584,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -662,6 +680,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -757,6 +776,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -852,6 +872,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -918,6 +939,7 @@ GameObject:
   - component: {fileID: 1979322771}
   - component: {fileID: 1979322770}
   - component: {fileID: 1979322775}
+  - component: {fileID: 1979322776}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -933,7 +955,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979322769}
   serializedVersion: 2
-  m_Mass: 1.5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -966,6 +988,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1033,4 +1056,18 @@ MonoBehaviour:
   _normalSpeed: 15
   _player1: 1
   _player2: 0
-  _jumpingSpeed: 10
+  _ball: 0
+  _jumpingSpeed: 7
+  _bouncy: {fileID: 13400000, guid: 0725ec8003dbe2b4ea6185270a4b844a, type: 2}
+--- !u!114 &1979322776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979322769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e984a4d97bed0439271ce4b58f0fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
