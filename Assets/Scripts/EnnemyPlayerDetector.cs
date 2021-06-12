@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TwompPlayerDetector : MonoBehaviour
+public class EnnemyPlayerDetector : MonoBehaviour
 {
     public Player _player;
 
