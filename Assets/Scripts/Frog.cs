@@ -30,14 +30,7 @@ public class Frog : MonoBehaviour
             PlayerArray = PlayerArray.OrderBy(w => (w.transform.position - rb.position).magnitude).ToArray();
             if (Mathf.Abs((PlayerArray[0].transform.position - rb.transform.position).magnitude) < 100)
             {
-                if (PlayerArray[0].transform.position.x - rb.transform.position.x < 0)
-                {
-                    Move(-1f);
-                }
-                if (PlayerArray[0].transform.position.x - rb.transform.position.x > 0)
-                {
-                    Move(1f);
-                }
+                rb.AddForce(new Vector2((PlayerArray[0].transform.position - rb.position).normalized.x, 0.5f + (PlayerArray[0].transform.position - rb.position).normalized.y) * 4, ForceMode.Impulse);
             }
         }
     }
