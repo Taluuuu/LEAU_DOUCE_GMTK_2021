@@ -15,6 +15,9 @@ public class Rope : MonoBehaviour
     [SerializeField] private bool _p1Stuck;
     [SerializeField] private bool _p2Stuck;
 
+    [SerializeField] private float _force = 50.0f;
+    [SerializeField] private bool _applyForceBetweenObjects = false;
+
     private LineRenderer _lineRenderer;
     private List<RopeSegment> _ropeSegments = new List<RopeSegment>();
     private List<SphereCollider> _ropeColliders = new List<SphereCollider>();
@@ -27,6 +30,8 @@ public class Rope : MonoBehaviour
 
         float delta = (_p2.position - _p1.position).magnitude / _segmentCount;
         Vector3 direction = (_p2.position - _p1.position).normalized;
+
+        gameObject.layer = 6;
 
         for (int i = 0; i < _segmentCount; i++)
         {
@@ -88,7 +93,8 @@ public class Rope : MonoBehaviour
             for (int c = 0; c < encounters.Length; c++)
             {
                 var encounter = encounters[c];
-                if (encounter != curCollider) // Skip itself
+                // Skip itself and the player
+                if (encounter != curCollider && encounter.gameObject.layer != 0)
                 {
                     // Calculate new position
                     Physics.ComputePenetration(
@@ -107,23 +113,38 @@ public class Rope : MonoBehaviour
         }
 
         // Add forces to tied rigidbodies
-        if(_p1Stuck)
+        var currentRopeLength = CalculateRopeLength();
+        var ropeExtension = currentRopeLength - _segmentCount * _segmentLength;
+        Debug.Log(ropeExtension);
+        if (_applyForceBetweenObjects)
         {
+            if (_p1Stuck)
+            {
+                _p1.AddForce((_ropeSegments[1].posNow - _ropeSegments[0].posNow).normalized * _force * ropeExtension);
+            }
+            else
+            {
+                _p1.position = _ropeSegments[0].posNow;
+            }
 
+            if (_p2Stuck)
+            {
+                _p2.AddForce((_ropeSegments[_segmentCount - 2].posNow - _ropeSegments[_segmentCount - 1].posNow).normalized * _force * ropeExtension);
+            }
+            else
+            {
+                _p2.position = _ropeSegments[_segmentCount - 1].posNow;
+            }
         }
-        else
-        {
-            _p1.position = _ropeSegments[0].posNow;
-        }
+    }
 
-        if(_p2Stuck)
-        {
+    private float CalculateRopeLength()
+    {
+        float total = 0.0f;
+        for(int i = 0; i < _segmentCount - 1; i++)
+            total += (_ropeSegments[i].posNow - _ropeSegments[i + 1].posNow).magnitude;
 
-        }
-        else
-        {
-            _p2.position = _ropeSegments[_segmentCount - 1].posNow;
-        }
+        return total;
     }
 
     private void ApplyConstraint()

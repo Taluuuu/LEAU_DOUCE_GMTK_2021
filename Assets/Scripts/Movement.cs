@@ -8,18 +8,29 @@ public class Movement : MonoBehaviour
     Vector2 _force = new Vector2();
     private float _speed;
     [SerializeField] private float _normalSpeed;
-    [SerializeField] private bool _player1;
-    [SerializeField] private bool _player2;
+    [SerializeField] public float _attackTime;
+    [SerializeField] private float _attackCooldown;
+    [SerializeField] public bool _player1;
+    [SerializeField] public bool _player2;
+
+    private float _timeSinceAttack1;
+    private float _timeSinceAttack2;
+    public float _timeAttack1;
+    public float _timeAttack2;
     private bool _stuckToWall;
     private bool _jump;
     public bool _ball = false;
+
     [SerializeField] private float _jumpingSpeed;
     [SerializeField] private PhysicMaterial _bouncy;
 
 
     private void Start()
     {
+
         _rB = GetComponent<Rigidbody>();
+        _timeAttack1 = _attackTime;
+        _timeAttack2 = _attackTime;
     }
 
     private void FixedUpdate()
@@ -179,23 +190,58 @@ public class Movement : MonoBehaviour
 
     private void AttackPerso1()
     {
-        if (Input.GetKey(KeyCode.E))
+        _timeSinceAttack1 += Time.deltaTime;
+
+        if (_ball)
+        {
+            _timeAttack1 -= Time.deltaTime;
+        }
+
+        if(_timeAttack1 <= 0)
+        {
+            _ball = false;
+        }
+
+        if(!_ball & _timeSinceAttack1 - _attackTime >= _attackCooldown)
+        {
+            _timeAttack1 = _attackTime;
+        }
+
+        if (Input.GetKey(KeyCode.E) & _timeAttack1 == _attackTime)
         {
 
             _ball = true;
+            _timeSinceAttack1 = 0;
         }
-        else
-            _ball = false;
+
+
     }
 
     private void AttackPerso2()
     {
-        if (Input.GetKey(KeyCode.L))
+        _timeSinceAttack2 += Time.deltaTime;
+
+        if (_ball)
         {
-            _ball = true;
+            _timeAttack2 -= Time.deltaTime;
         }
-        else
+
+        if (_timeAttack2 <= 0)
+        {
             _ball = false;
+        }
+
+        if (!_ball & _timeSinceAttack2 - _attackTime >= _attackCooldown)
+        {
+            _timeAttack2 = _attackTime;
+        }
+
+        if (Input.GetKey(KeyCode.L) & _timeAttack2 == _attackTime)
+        {
+
+            _ball = true;
+            _timeSinceAttack2 = 0;
+        }
     }
 
     private void Jump()

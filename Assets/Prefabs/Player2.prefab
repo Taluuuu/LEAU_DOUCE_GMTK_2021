@@ -60,8 +60,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalSpeed: 30
+  _attackTime: 5
+  _attackCooldown: 3
   _player1: 0
   _player2: 1
+  _timeAttack1: 0
+  _timeAttack2: 0
   _ball: 0
   _jumpingSpeed: 5
   _bouncy: {fileID: 13400000, guid: 0725ec8003dbe2b4ea6185270a4b844a, type: 2}
