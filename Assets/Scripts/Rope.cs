@@ -114,13 +114,15 @@ public class Rope : MonoBehaviour
 
         // Add forces to tied rigidbodies
         var currentRopeLength = CalculateRopeLength();
-        var ropeExtension = currentRopeLength - _segmentCount * _segmentLength;
+        var ropeExtension = Mathf.Clamp(currentRopeLength - _segmentCount * _segmentLength, 0.0f, _segmentLength * 10.0f);
         Debug.Log(ropeExtension);
         if (_applyForceBetweenObjects)
         {
             if (_p1Stuck)
             {
-                _p1.AddForce((_ropeSegments[1].posNow - _ropeSegments[0].posNow).normalized * _force * ropeExtension);
+                if(ropeExtension > 0.0f)
+                    _p1.AddForce((_ropeSegments[_segmentCount / 2].posNow - _ropeSegments[0].posNow).normalized * _force * ropeExtension);
+                //_p1.AddForce((_p2.position - _p1.position).normalized * ropeExtension * _force);
             }
             else
             {
@@ -129,7 +131,9 @@ public class Rope : MonoBehaviour
 
             if (_p2Stuck)
             {
-                _p2.AddForce((_ropeSegments[_segmentCount - 2].posNow - _ropeSegments[_segmentCount - 1].posNow).normalized * _force * ropeExtension);
+                if (ropeExtension > 0.0f)
+                    _p2.AddForce((_ropeSegments[_segmentCount / 2].posNow - _ropeSegments[_segmentCount - 1].posNow).normalized * _force * ropeExtension);
+                //_p2.AddForce((_p1.position - _p2.position).normalized * ropeExtension * _force);
             }
             else
             {
