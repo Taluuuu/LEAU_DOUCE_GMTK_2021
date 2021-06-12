@@ -7,8 +7,11 @@ public class Tourelle : MonoBehaviour
     [SerializeField] private float _shootSpeed;
     [SerializeField] private float _projSpeed;
 
-    public Player _player1;
-    public Player _player2;
+    //public Player _player1;
+    //public Player _player2;
+    private UnityEngine.GameObject _player1;
+    private UnityEngine.GameObject _player2;
+
     Vector3 _range1;
     Vector3 _range2;
 
@@ -22,15 +25,22 @@ public class Tourelle : MonoBehaviour
 
     private float _timeSinceShoot;
 
+
+
+    private UnityEngine.GameObject[] Players;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Players = GameObject.FindGameObjectsWithTag("Player");
+        _player1 = Players[0];
+        _player2 = Players[1];
     }
 
     // Update is called once per frame
     void Update()
     {
+
         _meetPlayer1 = false;
         _meetPlayer2 = false;
 
