@@ -5,9 +5,11 @@ using UnityEngine;
 public class Crawler : MonoBehaviour
 {
     private Rigidbody rb;
-    public Vector3 Direction;
-    public bool switched;
+    private Vector3 Direction;
+    private bool switched;
     private IEnumerator coroutine;
+    public float speed;
+    public float initial;
 
     private void Awake()
     {
@@ -16,7 +18,7 @@ public class Crawler : MonoBehaviour
     void Start()
     {
         switched = false;
-        Direction = Vector3.right;
+        Direction = Vector3.right*initial;
     }
 
     void Update()
@@ -36,12 +38,12 @@ public class Crawler : MonoBehaviour
                 StartCoroutine(Wait());
             }
         }
-        rb.velocity=Direction*5;
+        rb.velocity=Direction*speed;
     }
     private IEnumerator Wait()
     {
         switched = true;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.0f/speed);
         switched = false;
     }
 }

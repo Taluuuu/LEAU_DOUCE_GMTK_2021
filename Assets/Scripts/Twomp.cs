@@ -6,7 +6,8 @@ public class Twomp : MonoBehaviour
 {
     [SerializeField] private float _dropSpeed;
     [SerializeField] private float _upSpeed;
-    [SerializeField] private float _detectorHeight;
+
+    public TwompDetector _twompDetector;
 
     private Vector3 _initialPosition;
     private bool falling = false;
@@ -41,7 +42,7 @@ public class Twomp : MonoBehaviour
 
         }
 
-        if (transform.position.y <= _detectorHeight)
+        if (transform.position.y <= _twompDetector.GetComponent<Transform>().position.y)
         {
             //touch the ground
           
@@ -82,8 +83,4 @@ public class Twomp : MonoBehaviour
             falling = false;
     }
 
-    public void SetDetectorHeight(Vector3 _newDetectorheight)
-    {
-        _detectorHeight = _newDetectorheight.y;
-    }
 }
