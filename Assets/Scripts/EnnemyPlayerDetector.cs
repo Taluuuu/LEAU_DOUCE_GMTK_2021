@@ -5,23 +5,23 @@ using UnityEngine;
 public class EnnemyPlayerDetector : MonoBehaviour
 {
     private Rigidbody rb;
-    private Player[] Players;
+    public Player Player1;
+    public Player Player2;
     private void Awake()
     {
         rb = transform.GetComponent­<Rigidbody>();
-        Players = Player.FindObjectsOfType<Player>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if ((Players[0].transform.position-rb.position).magnitude > (Players[1].transform.position - rb.position).magnitude)
+            if ((Player1.transform.position-rb.position).magnitude > (Player2.transform.position - rb.position).magnitude)
             {
-                Players[1].Hit();
+                Player2.Hit();
             }
-            if ((Players[1].transform.position - rb.position).magnitude > (Players[0].transform.position - rb.position).magnitude)
+            if ((Player2.transform.position - rb.position).magnitude > (Player1.transform.position - rb.position).magnitude)
             {
-                Players[0].Hit();
+                Player1.Hit();
             }
         }
     }
