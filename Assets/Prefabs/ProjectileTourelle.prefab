@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1285995217341597384}
   - component: {fileID: 381316611865180184}
   - component: {fileID: 4137909895378288488}
-  - component: {fileID: 3693526409092125432}
+  - component: {fileID: 6412391276831483842}
   m_Layer: 0
   m_Name: ProjectileTourelle
   m_TagString: Untagged
@@ -58,9 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692906388abd1ee48ad54554dc35ca9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1: {fileID: 7137148591954802040, guid: 7e32f4ab8e28b1f4a94eebf35e3da78f, type: 3}
-  Player2: {fileID: 5096177056818562276, guid: 5448127ab07554149a74e2bb94666208, type: 3}
---- !u!54 &3693526409092125432
+--- !u!54 &6412391276831483842
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

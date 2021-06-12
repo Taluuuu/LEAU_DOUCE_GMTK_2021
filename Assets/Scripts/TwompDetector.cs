@@ -11,7 +11,6 @@ public class TwompDetector : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _twomp.TwompDetect();
-            _twomp.SetDetectorHeight(transform.position);
 
         }
     }
