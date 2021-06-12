@@ -62,6 +62,11 @@ public class Tourelle : MonoBehaviour
                  {
                      ShootPlayer2();
                  }
+
+        if (!_meetPlayer1 & !_meetPlayer2)
+            _timeSinceShoot = 0;
+
+
     }
 
     private void TestVew1()
