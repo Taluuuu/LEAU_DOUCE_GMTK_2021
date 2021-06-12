@@ -30,7 +30,10 @@ public class RopeSegment : MonoBehaviour
 
             float angle = Mathf.Atan2(leftDelta.y, leftDelta.x);
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Rad2Deg * angle + 90.0f);
-            transform.localScale = new Vector3(0.1f, leftDelta.magnitude * 0.5f * 0.9f, 0.1f);
+            transform.localScale = new Vector3(
+                Mathf.Clamp(leftDelta.magnitude * 0.5f * 0.9f, 0.0f, 0.1f), 
+                leftDelta.magnitude * 0.5f * 0.9f,
+                Mathf.Clamp(leftDelta.magnitude * 0.5f * 0.9f, 0.0f, 0.1f));
 
             Vector3 forceToApply = Vector3.zero;
 
