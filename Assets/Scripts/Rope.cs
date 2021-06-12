@@ -8,9 +8,12 @@ public class Rope : MonoBehaviour
     [SerializeField] private float _segmentLength = 0.25f;
     [SerializeField] private int _segmentCount = 35;
     [SerializeField] private float _ropeWidth = 0.1f;
+    [SerializeField] private bool _elastique = false;
 
     [SerializeField] private Transform _p1;
     [SerializeField] private Transform _p2;
+    [SerializeField] private bool _p1Stuck;
+    [SerializeField] private bool _p2Stuck;
 
     private LineRenderer _lineRenderer;
     private List<RopeSegment> _ropeSegments = new List<RopeSegment>();
@@ -58,7 +61,7 @@ public class Rope : MonoBehaviour
         // Simulate
         Vector2 forceGravity = new Vector2(0f, -1.5f);
 
-        for (int i = 1; i < _segmentCount; i++)
+        for (int i = 0; i < _segmentCount; i++)
         {
             RopeSegment firstSegment = _ropeSegments[i];
             Vector2 velocity = firstSegment.posNow - firstSegment.posOld;
@@ -68,7 +71,7 @@ public class Rope : MonoBehaviour
             _ropeSegments[i] = firstSegment;
         }
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < (_elastique ? 1 : 50); i++)
         {
             ApplyConstraint();
         }
@@ -82,10 +85,10 @@ public class Rope : MonoBehaviour
             // Get all collisions with the segment's sphere collider
             var encounters = Physics.OverlapSphere(curCollider.center, curCollider.radius);
             // Loop through all encountered colliders
-            for(int c = 0; c < encounters.Length; c++)
+            for (int c = 0; c < encounters.Length; c++)
             {
                 var encounter = encounters[c];
-                if(encounter != curCollider) // Skip itself
+                if (encounter != curCollider) // Skip itself
                 {
                     // Calculate new position
                     Physics.ComputePenetration(
@@ -107,43 +110,85 @@ public class Rope : MonoBehaviour
     private void ApplyConstraint()
     {
         RopeSegment firstSegment = _ropeSegments[0];
-        firstSegment.posNow = _p1.position;
-        _ropeSegments[0] = firstSegment;
-
         RopeSegment endSegment = _ropeSegments[_segmentCount - 1];
-        firstSegment.posNow = _p2.position;
-        _ropeSegments[_segmentCount - 1] = true ? firstSegment : endSegment;
 
-        for (int i = 0; i < _segmentCount - 1; i++)
+        if(_p1Stuck)
+            firstSegment.posNow = _p1.position;
+
+        if(_p2Stuck)
+            endSegment.posNow = _p2.position;
+
+        _ropeSegments[0] = firstSegment;
+        _ropeSegments[_segmentCount - 1] = endSegment;
+
+        if (_p1Stuck)
         {
-            RopeSegment firstSeg = _ropeSegments[i];
-            RopeSegment secondSeg = _ropeSegments[i + 1];
+            for (int i = 0; i < _segmentCount - 1; i++)
+            {
+                RopeSegment firstSeg = _ropeSegments[i];
+                RopeSegment secondSeg = _ropeSegments[i + 1];
 
-            float dist = (firstSeg.posNow - secondSeg.posNow).magnitude;
-            float error = Mathf.Abs(dist - _segmentLength);
-            Vector2 changeDir = Vector2.zero;
+                float dist = (firstSeg.posNow - secondSeg.posNow).magnitude;
+                float error = Mathf.Abs(dist - _segmentLength);
+                Vector2 changeDir = Vector2.zero;
 
-            if (dist > _segmentLength)
-            {
-                changeDir = (firstSeg.posNow - secondSeg.posNow).normalized;
-            }
-            else if (dist < _segmentLength)
-            {
-                changeDir = (secondSeg.posNow - firstSeg.posNow).normalized;
-            }
+                if (dist > _segmentLength)
+                {
+                    changeDir = (firstSeg.posNow - secondSeg.posNow).normalized;
+                }
+                else if (dist < _segmentLength)
+                {
+                    changeDir = (secondSeg.posNow - firstSeg.posNow).normalized;
+                }
 
-            Vector2 changeAmount = changeDir * error;
-            if (i != 0)
-            {
-                firstSeg.posNow -= changeAmount * 0.5f;
-                _ropeSegments[i] = firstSeg;
-                secondSeg.posNow += changeAmount * 0.5f;
-                _ropeSegments[i + 1] = secondSeg;
+                Vector2 changeAmount = changeDir * error;
+                if (i != 0)
+                {
+                    firstSeg.posNow -= changeAmount * 0.5f;
+                    _ropeSegments[i] = firstSeg;
+                    secondSeg.posNow += changeAmount * 0.5f;
+                    _ropeSegments[i + 1] = secondSeg;
+                }
+                else
+                {
+                    secondSeg.posNow += changeAmount;
+                    _ropeSegments[i + 1] = secondSeg;
+                }
             }
-            else
+        }
+        else
+        {
+            for (int i = _segmentCount - 1; i > 0; i--)
             {
-                secondSeg.posNow += changeAmount;
-                _ropeSegments[i + 1] = secondSeg;
+                RopeSegment firstSeg = _ropeSegments[i];
+                RopeSegment secondSeg = _ropeSegments[i - 1];
+
+                float dist = (firstSeg.posNow - secondSeg.posNow).magnitude;
+                float error = Mathf.Abs(dist - _segmentLength);
+                Vector2 changeDir = Vector2.zero;
+
+                if (dist > _segmentLength)
+                {
+                    changeDir = (firstSeg.posNow - secondSeg.posNow).normalized;
+                }
+                else if (dist < _segmentLength)
+                {
+                    changeDir = (secondSeg.posNow - firstSeg.posNow).normalized;
+                }
+
+                Vector2 changeAmount = changeDir * error;
+                if (i != 0)
+                {
+                    firstSeg.posNow -= changeAmount * 0.5f;
+                    _ropeSegments[i] = firstSeg;
+                    secondSeg.posNow += changeAmount * 0.5f;
+                    _ropeSegments[i - 1] = secondSeg;
+                }
+                else
+                {
+                    secondSeg.posNow += changeAmount;
+                    _ropeSegments[i - 1] = secondSeg;
+                }
             }
         }
     }
