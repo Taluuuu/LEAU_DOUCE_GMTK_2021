@@ -56,7 +56,7 @@ public class Movement : MonoBehaviour
         {
             if (_player1)
             {
-                if (Input.GetKey(KeyCode.LeftControl))
+                if (Input.GetKey(KeyCode.LeftShift))
                 {
                     _rB.velocity = Vector3.zero;
                     _rB.Sleep();
@@ -69,7 +69,7 @@ public class Movement : MonoBehaviour
 
             if (_player2)
             {
-                if (Input.GetKey(KeyCode.LeftControl))
+                if (Input.GetKey(KeyCode.K))
                 {
                     _rB.velocity = Vector3.zero;
                     _rB.Sleep();
