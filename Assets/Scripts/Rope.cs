@@ -77,7 +77,34 @@ public class Rope : MonoBehaviour
 
         for (int i = 0; i < _segmentCount; i++)
         {
-            _ropeColliders[i].transform.position = _ropeSegments[i].posNow;
+            bool detectedACollision = false;
+            Collider[] colliders = Physics.OverlapSphere(_ropeColliders[i].transform.position, 0.05f);
+            for (int c = 0; c < colliders.Length; c++)
+            {
+                if (_ropeColliders[i].gameObject.GetComponent<Collider>() != colliders[c])
+                {
+                    detectedACollision = true;
+                    Vector3 dir;
+                    float len;
+                    Physics.ComputePenetration(
+                        _ropeColliders[i].gameObject.GetComponent<Collider>(), _ropeColliders[i].transform.position, _ropeColliders[i].rotation, 
+                        colliders[c], colliders[c].gameObject.transform.position, colliders[c].gameObject.transform.rotation, out dir, out len);
+
+                    _ropeColliders[i].position += dir * len;
+                }
+            }
+
+            if (detectedACollision)
+            {
+                var currentSegment = _ropeSegments[i];
+                currentSegment.posOld = currentSegment.posNow;
+                currentSegment.posNow = _ropeColliders[i].transform.position;
+                _ropeSegments[i] = currentSegment;
+            }
+            else
+            {
+                _ropeColliders[i].transform.position = _ropeSegments[i].posNow;
+            }
         }
     }
 
@@ -126,9 +153,9 @@ public class Rope : MonoBehaviour
 
     public void RopeSegmentCollision(int index)
     {
-        var currentSegment = _ropeSegments[index];
-        currentSegment.posOld = currentSegment.posNow;
-        currentSegment.posNow = _ropeColliders[index].transform.position;
-        _ropeSegments[index] = currentSegment;
+        //var currentSegment = _ropeSegments[index];
+        //currentSegment.posOld = currentSegment.posNow;
+        //currentSegment.posNow = _ropeColliders[index].transform.position;
+        //_ropeSegments[index] = currentSegment;
     }
 }
