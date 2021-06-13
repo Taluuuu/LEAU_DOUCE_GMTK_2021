@@ -125,12 +125,12 @@ public class Movement : MonoBehaviour
 
         if (_force.x == 1)
         {
-            _rB.transform.rotation = Quaternion.Euler(0, 0, 0);
+            _rB.transform.rotation = Quaternion.Euler(-90, 0, 0);
         }
 
         if (_force.x == -1)
         {
-            _rB.transform.rotation = Quaternion.Euler(0, 180, 0);
+            _rB.transform.rotation = Quaternion.Euler(-90, 180, 0);
         }
 
 
