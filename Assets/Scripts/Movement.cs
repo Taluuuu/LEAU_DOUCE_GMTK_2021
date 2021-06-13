@@ -23,11 +23,9 @@ public class Movement : MonoBehaviour
     private float _timeSinceAttack2;
     public float _timeAttack1;
     public float _timeAttack2;
-    private bool _stuckToWall;
+    private bool _grabbing;
     private bool _jump;
     public bool _ball = false;
-
-    private Vector3 _normal = new Vector3();
 
     [SerializeField] private float _jumpingSpeed;
     [SerializeField] private PhysicMaterial _bouncy;
@@ -45,24 +43,31 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Appliquer les physiques
-        _rB.AddForce(_force * _speed);
-        _speed = _normalSpeed;
-
-        if (!_jump)
+        bool peutGrab = false;
+        string grabDir = "";
+        if (Physics.Raycast(_rB.position, Vector3.down, 2f, 1 << 3))
         {
-            if (_player1)
-            {
-                SautPerso1();
-            }
-
-            if (_player2)
-            {
-                SautPerso2();
-            }
+            peutGrab = true;
+            grabDir = "AggripeSol";
+        }
+        else if (Physics.Raycast(_rB.position, Vector3.up, 2f, 1 << 3))
+        {
+            peutGrab = true;
+            grabDir = "AggripePlafond";
+        }
+        else if (Physics.Raycast(_rB.position, Vector3.left, 1f, 1 << 3))
+        {
+            peutGrab = true;
+            grabDir = "AggripeMur";
+        }
+        else if (Physics.Raycast(_rB.position, Vector3.right, 1f, 1 << 3))
+        {
+            peutGrab = true;
+            grabDir = "AggripeMur";
         }
 
-        if (_stuckToWall)
+        _grabbing = false;
+        if (peutGrab)
         {
             if (_player1)
             {
@@ -70,22 +75,8 @@ public class Movement : MonoBehaviour
                 {
                     _rB.velocity = Vector3.zero;
                     _rB.Sleep();
-
-                    if (Mathf.Abs(_normal.x) > Mathf.Abs(_normal.y))
-                    {
-                        _animator.SetBool("AggripeMur", true);
-                    }
-                    else
-                    {
-                        if (_normal.y > 0.0f)
-                        {
-                            _animator.SetBool("AggripeSol", true);
-                        }
-                        else
-                        {
-                            _animator.SetBool("AggripePlafond", true);
-                        }
-                    }
+                    _animator.SetBool(grabDir, true);
+                    _grabbing = true;
                 }
                 else
                 {
@@ -102,22 +93,8 @@ public class Movement : MonoBehaviour
                 {
                     _rB.velocity = Vector3.zero;
                     _rB.Sleep();
-
-                    if (Mathf.Abs(_normal.x) > Mathf.Abs(_normal.y))
-                    {
-                        _animator.SetBool("AggripeMur", true);
-                    }
-                    else
-                    {
-                        if (_normal.y > 0.0f)
-                        {
-                            _animator.SetBool("AggripeSol", true);
-                        }
-                        else
-                        {
-                            _animator.SetBool("AggripePlafond", true);
-                        }
-                    }
+                    _animator.SetBool(grabDir, true);
+                    _grabbing = true;
                 }
                 else
                 {
@@ -125,6 +102,26 @@ public class Movement : MonoBehaviour
                     _animator.SetBool("AggripeMur", false);
                     _animator.SetBool("AggripeSol", false);
                     _animator.SetBool("AggripePlafond", false);
+                }
+            }
+        }
+
+        if (!_grabbing)
+        {
+            //Appliquer les physiques
+            _rB.AddForce(_force * _speed);
+            _speed = _normalSpeed;
+
+            if (!_jump)
+            {
+                if (_player1)
+                {
+                    SautPerso1();
+                }
+
+                if (_player2)
+                {
+                    SautPerso2();
                 }
             }
         }
@@ -146,59 +143,41 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-
-        UnityEngine.GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
-
-        if(Players[0].GetComponent<Transform>().position == transform.position)
+        if (!_grabbing)
         {
-            if ((Players[1].GetComponent<Transform>().position - transform.position).magnitude <= 2)
+            //Determiner les forces
+            _force.x = 0;
+            _force.y = 0;
+
+            _animator.SetBool("Jumping", false);
+
+            Jump();
+
+            if (_player1)
             {
-                _rope.RopeIsEnabled = true;
-                _rope._timeRope = 0;
+                MovementPerso1();
+                AttackPerso1();
+                _animator.SetBool("Running", Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D));
             }
-        }
-        else
-        {
 
-            if ((Players[0].GetComponent<Transform>().position - transform.position).magnitude <= 2)
+            if (_player2)
             {
-                _rope.RopeIsEnabled = true;
-                _rope._timeRope = 0;
+                MovementPerso2();
+                AttackPerso2();
+                _animator.SetBool("Running", Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow));
             }
-        }
-       
-         //Determiner les forces
-        _force.x = 0;
-        _force.y = 0;
 
-        _animator.SetBool("Jumping", false);
+            _force.Normalize();
 
-        Jump();
+            if (_force.x == 1)
+            {
+                _rB.transform.rotation = Quaternion.Euler(-90, 0, 0);
+            }
 
-        if (_player1)
-        {
-            MovementPerso1();
-            AttackPerso1();
-            _animator.SetBool("Running", Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D));
-        }
-
-        if (_player2)
-        {
-            MovementPerso2();
-            AttackPerso2();
-            _animator.SetBool("Running", Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow));
-        }
-
-        _force.Normalize();
-
-        if (_force.x == 1)
-        {
-            _rB.transform.rotation = Quaternion.Euler(-90, 0, 0);
-        }
-
-        if (_force.x == -1)
-        {
-            _rB.transform.rotation = Quaternion.Euler(-90, 180, 0);
+            if (_force.x == -1)
+            {
+                _rB.transform.rotation = Quaternion.Euler(-90, 180, 0);
+            }
         }
 
 
@@ -216,7 +195,6 @@ public class Movement : MonoBehaviour
 
     private void MovementPerso1()
     {
-        // Note de charlo : WTF
         if (!Physics.Raycast(_rB.position, Vector3.left, 0.8f, 1 << 3))
         {
             if (Input.GetKey(KeyCode.A))
@@ -332,7 +310,7 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (Physics.Raycast(_rB.position, Vector3.down, 2.5f, 1 << 3))
+        if (Physics.Raycast(_rB.position, Vector3.down, 2f, 1 << 3))
         {
             _jump = false;
             _animator.SetBool("Falling", false);
@@ -347,8 +325,7 @@ public class Movement : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            _stuckToWall = true;
-            _normal = collision.GetContact(0).normal;  
+            //_stuckToWall = true;
         }
     }
 
@@ -356,7 +333,7 @@ public class Movement : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            _stuckToWall = false;
+            //_stuckToWall = false;
         }
     }
 
