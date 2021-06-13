@@ -62,12 +62,12 @@ public class Movement : MonoBehaviour
             peutGrab = true;
             grabDir = "AggripePlafond";
         }
-        else if (Physics.Raycast(_rB.position, Vector3.left, 1f, 1 << 3))
+        else if (Physics.Raycast(_rB.position, Vector3.left, 2f, 1 << 3))
         {
             peutGrab = true;
             grabDir = "AggripeMur";
         }
-        else if (Physics.Raycast(_rB.position, Vector3.right, 1f, 1 << 3))
+        else if (Physics.Raycast(_rB.position, Vector3.right, 2f, 1 << 3))
         {
             peutGrab = true;
             grabDir = "AggripeMur";

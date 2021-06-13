@@ -304,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5771613064503720018, guid: 417bf9c5417e65b41a66c04078a8821d, type: 3}
       propertyPath: _jumpingSpeed
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5771613064503720018, guid: 417bf9c5417e65b41a66c04078a8821d, type: 3}
       propertyPath: _attackCooldown
@@ -412,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335130540162767831, guid: 37a7a73fe73442a42b26f0741f803ea1, type: 3}
       propertyPath: _jumpingSpeed
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1335130540162767831, guid: 37a7a73fe73442a42b26f0741f803ea1, type: 3}
       propertyPath: _attackCooldown
