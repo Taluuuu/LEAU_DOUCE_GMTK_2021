@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnnemyPlayerDetector : MonoBehaviour
 {
+    [SerializeField] public ParticleSystem dust;
     private void OnTriggerEnter(Collider other)
     {
 
@@ -11,6 +12,7 @@ public class EnnemyPlayerDetector : MonoBehaviour
         {
             if (other.GetComponent<Movement>()._ball)
             {
+                dust.Play();
                 Destroy(gameObject);
             }
             else
@@ -34,6 +36,7 @@ public class EnnemyPlayerDetector : MonoBehaviour
         {
             if (other.collider.GetComponent<Movement>()._ball)
             {
+                dust.Play();
                 Destroy(gameObject);
             }
             else
