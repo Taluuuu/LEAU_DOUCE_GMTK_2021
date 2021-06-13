@@ -281,7 +281,7 @@ public class Movement : MonoBehaviour
 
     public void BrokeRope()
     {
-        
+        _rope.RopeIsEnabled = false;
     }
 
 }
