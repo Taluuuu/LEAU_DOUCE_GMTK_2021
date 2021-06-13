@@ -53,8 +53,8 @@ MonoBehaviour:
   xspeed: 2
   yspeed: 5
   minimumyspeed: 1
-  model: {fileID: 0}
-  _animator: {fileID: 0}
+  model: {fileID: 8527220685994904461}
+  _animator: {fileID: 6903704518960221894}
 --- !u!114 &2959455592132289439
 MonoBehaviour:
   m_ObjectHideFlags: 0
