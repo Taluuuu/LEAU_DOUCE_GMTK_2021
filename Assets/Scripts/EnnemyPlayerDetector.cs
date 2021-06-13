@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnnemyPlayerDetector : MonoBehaviour
 {
     [SerializeField] public ParticleSystem dust;
+    private IEnumerator coroutine;
     private void OnTriggerEnter(Collider other)
     {
 
@@ -13,6 +14,7 @@ public class EnnemyPlayerDetector : MonoBehaviour
             if (other.GetComponent<Movement>()._ball)
             {
                 dust.Play();
+                StartCoroutine(Wait());
                 Destroy(gameObject);
             }
             else
@@ -37,6 +39,7 @@ public class EnnemyPlayerDetector : MonoBehaviour
             if (other.collider.GetComponent<Movement>()._ball)
             {
                 dust.Play();
+                StartCoroutine(Wait());
                 Destroy(gameObject);
             }
             else
@@ -50,5 +53,9 @@ public class EnnemyPlayerDetector : MonoBehaviour
             }
                 
         }
+    }
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.8f);
     }
 }
