@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2245948855878770818, guid: f88286e580a175d449f5d9c42e30f592, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7
+      value: 1.38
       objectReference: {fileID: 0}
     - target: {fileID: 4623266262010674325, guid: f88286e580a175d449f5d9c42e30f592, type: 3}
       propertyPath: _ropeCooldown
@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6752165992174924512, guid: f88286e580a175d449f5d9c42e30f592, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.33
+      value: -6.48
       objectReference: {fileID: 0}
     - target: {fileID: 7202292641697269275, guid: f88286e580a175d449f5d9c42e30f592, type: 3}
       propertyPath: m_RootOrder
@@ -852,11 +852,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8674203458512470924, guid: 85e68cb27144b1643a1a4cca0457af21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.5
+      value: -7.4
       objectReference: {fileID: 0}
     - target: {fileID: 8674203458512470924, guid: 85e68cb27144b1643a1a4cca0457af21, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.53
+      value: 7.1
       objectReference: {fileID: 0}
     - target: {fileID: 8674203458512470924, guid: 85e68cb27144b1643a1a4cca0457af21, type: 3}
       propertyPath: m_LocalPosition.z
