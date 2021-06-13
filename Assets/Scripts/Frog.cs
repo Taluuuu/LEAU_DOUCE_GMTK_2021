@@ -32,7 +32,7 @@ public class Frog : MonoBehaviour
         if (Physics.Raycast(rb.position, Vector3.down, 1f, 1 << 3))
         {
             PlayerArray = GameObject.FindGameObjectsWithTag("Player");
-            PlayerArray = PlayerArray.OrderBy(w => (w.transform.position - rb.position).magnitude).ToArray();
+            PlayerArray = PlayerArray.OrderBy(w => Mathf.Abs((w.transform.position - rb.position).magnitude)).ToArray();
             if (Mathf.Abs((PlayerArray[0].transform.position - rb.transform.position).magnitude) < Range)
             {
                 if (Mathf.Abs(PlayerArray[0].transform.position.x) - Mathf.Abs(rb.transform.position.x) > 0) rb.rotation = Quaternion.Euler(0 ,180, 0);
