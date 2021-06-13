@@ -178,8 +178,6 @@ public class Movement : MonoBehaviour
             if ((Players[1].GetComponent<Transform>().position - transform.position).magnitude <= 2)
             {
                 _rope.RopeIsEnabled = true;
-                Music[1].volume = 0.1f;
-                Music[2].volume = 0f;
                 _rope._timeRope = 0;
             }
         }
@@ -189,12 +187,19 @@ public class Movement : MonoBehaviour
             if ((Players[0].GetComponent<Transform>().position - transform.position).magnitude <= 2)
             {
                 _rope.RopeIsEnabled = true;
-                Music[1].volume = 0.1f;
-                Music[2].volume = 0f;
                 _rope._timeRope = 0;
             }
         }
-
+        if (_rope.RopeIsEnabled == true)
+        {
+            Music[1].volume = 0.015f;
+            Music[2].volume = 0f;
+        }
+        if (_rope.RopeIsEnabled == false)
+        {
+            Music[1].volume = 0f;
+            Music[2].volume = 0.018f;
+        }
 
         if (!_grabbing)
         {
@@ -419,8 +424,6 @@ public class Movement : MonoBehaviour
     {
         _rope.RopeIsEnabled = false;
         AudioManager.PlaySound("cordequipete");
-        Music[1].volume = 0f;
-        Music[2].volume = 0.1f;
     }
     void CreateDust()
     {
