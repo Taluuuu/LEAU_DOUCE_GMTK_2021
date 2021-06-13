@@ -54,16 +54,6 @@ public class SliderScript : MonoBehaviour
             if(_bar3)
             {
 
-                if (gameObject.GetComponent<RectTransform>().position.y == 1200 & !_player1.GetComponent<Movement>()._rope.RopeIsEnabled)
-                {
-                    gameObject.transform.SetPositionAndRotation(new Vector3(transform.position.x, 1000, transform.position.z), transform.rotation);
-                }
-                
-                if(_player1.GetComponent<Movement>()._rope.RopeIsEnabled)
-                {
-                    gameObject.transform.SetPositionAndRotation(new Vector3(transform.position.x, 1200, transform.position.z), transform.rotation);
-                }
-
                 gameObject.GetComponent<Slider>().value = (_player1.GetComponent<Movement>()._rope._ropeCooldown - _player1.GetComponent<Movement>()._rope._timeRope) /_player1.GetComponent<Movement>()._rope._ropeCooldown;
             }
         }
