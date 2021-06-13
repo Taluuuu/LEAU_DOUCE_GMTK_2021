@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7348968608333119497}
   - component: {fileID: 4220685716820439217}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7657295360000066893}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlateformEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,6 +187,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9cfed031eccd32e4cb3db952b1ab48be, type: 3}
       propertyPath: m_Name
       value: demicercle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9cfed031eccd32e4cb3db952b1ab48be, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cfed031eccd32e4cb3db952b1ab48be, type: 3}
