@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a53935bcae3324ca16b7afd9365fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   _contractedLength: 0.2
   _extendedLength: 0.4
   _normalSpeed: 30
@@ -184,6 +185,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -2396233004390948251, guid: d30ee177dd6a60d4c9d1ea5ad15d38a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a243b686863046246a37588c9b4c5c86, type: 2}
     - target: {fileID: 919132149155446097, guid: d30ee177dd6a60d4c9d1ea5ad15d38a0, type: 3}
       propertyPath: m_Name
       value: Monstro
