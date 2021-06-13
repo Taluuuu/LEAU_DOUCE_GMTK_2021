@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7137148591954802040}
   - component: {fileID: 5077377967648155446}
   - component: {fileID: 5102186782511343614}
-  - component: {fileID: 4461697053110916538}
+  - component: {fileID: 7293890548008512015}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -76,15 +76,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalSpeed: 30
-  _timeAttackMax: 3
-  _timeAttackUp: 1
+  _attackTime: 0
+  _attackCooldown: 0
   _player1: 1
   _player2: 0
+  _timeAttack1: 0
+  _timeAttack2: 0
   _ball: 0
   _jumpingSpeed: 5
   _bouncy: {fileID: 13400000, guid: 0725ec8003dbe2b4ea6185270a4b844a, type: 2}
---- !u!65 &4461697053110916538
-BoxCollider:
+--- !u!136 &7293890548008512015
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -93,8 +95,9 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4209875514815880528
 GameObject:
