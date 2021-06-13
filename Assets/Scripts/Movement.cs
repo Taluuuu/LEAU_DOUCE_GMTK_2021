@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _attackCooldown;
     [SerializeField] public bool _player1;
     [SerializeField] public bool _player2;
+    [SerializeField] public AudioManager AudioManager;
 
     private float _timeSinceAttack1;
     private float _timeSinceAttack2;
@@ -32,7 +33,10 @@ public class Movement : MonoBehaviour
 
     [SerializeField] public Rope _rope;
 
-
+    private void Awake()
+    {
+        AudioManager = FindObjectOfType<AudioManager>();
+    }
     private void Start()
     {
 
@@ -73,6 +77,10 @@ public class Movement : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
+                    if (Input.GetKeyDown(KeyCode.LeftShift))
+                    {
+                        AudioManager.PlaySound("grab");
+                    }
                     _rB.velocity = Vector3.zero;
                     _rB.isKinematic = true;
                     _rB.useGravity = false;
@@ -95,6 +103,10 @@ public class Movement : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.K))
                 {
+                    if (Input.GetKeyDown(KeyCode.K))
+                    {
+                        AudioManager.PlaySound("grab");
+                    }
                     _rB.velocity = Vector3.zero;
                     _rB.isKinematic = true;
                     _rB.useGravity = false;
@@ -213,11 +225,19 @@ public class Movement : MonoBehaviour
         {
             _rope.SegmentLength = _extendedLength;
             _rope.GetComponent<LineRenderer>().material = _extendedMaterial;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                AudioManager.PlaySound("coretensionmaximale");
+            }
         }
         else
         {
             _rope.SegmentLength = _contractedLength;
             _rope.GetComponent<LineRenderer>().material = _normalMaterial;
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                AudioManager.PlaySound("retractioncorde");
+            }
         }
     }
 
@@ -228,6 +248,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 _force.x -= 1.0f;
+                if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
             }
         }
 
@@ -236,6 +257,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 _force.x += 1.0f;
+                if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
             }
         }
 
@@ -248,6 +270,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 _force.x -= 1.0f;
+                if (Random.Range(0,100)==1)AudioManager.PlaySound("cling");
             }
         }
 
@@ -256,6 +279,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 _force.x += 1.0f;
+                if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
             }
         }
     }
@@ -267,6 +291,7 @@ public class Movement : MonoBehaviour
             _jump = true;
             _rB.AddForce(Vector2.up * _jumpingSpeed, ForceMode.Impulse);
             _animator.SetBool("Jumping", true);
+            AudioManager.PlaySound("fshiou");
         }
     }
 
@@ -277,6 +302,7 @@ public class Movement : MonoBehaviour
             _jump = true;
             _rB.AddForce(Vector2.up * _jumpingSpeed, ForceMode.Impulse);
             _animator.SetBool("Jumping", true);
+            AudioManager.PlaySound("fshiou");
         }
     }
 
@@ -303,6 +329,7 @@ public class Movement : MonoBehaviour
         {
 
             _ball = true;
+            AudioManager.PlaySound("attackmode");
             _timeSinceAttack1 = 0;
         }
 
@@ -332,6 +359,7 @@ public class Movement : MonoBehaviour
         {
 
             _ball = true;
+            AudioManager.PlaySound("attackmode");
             _timeSinceAttack2 = 0;
         }
     }
@@ -354,6 +382,7 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             //_stuckToWall = true;
+            AudioManager.PlaySound("botkitapdenmure");
         }
     }
 
@@ -368,6 +397,7 @@ public class Movement : MonoBehaviour
     public void BrokeRope()
     {
         _rope.RopeIsEnabled = false;
+        AudioManager.PlaySound("cordequipete");
     }
 
 }
