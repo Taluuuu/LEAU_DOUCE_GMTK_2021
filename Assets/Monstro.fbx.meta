@@ -1,11 +1,35 @@
 fileFormatVersion: 2
-guid: 4eae174e8bb3500439fbab48ceb6fa07
+guid: d30ee177dd6a60d4c9d1ea5ad15d38a0
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable:
   - first:
-      74: 4781951162920444690
-    second: Armature|ArmatureAction
+      74: 6517714258327031822
+    second: Idle.001
+  - first:
+      74: -3928484385709681019
+    second: AggripeSol
+  - first:
+      74: -5525156782968029510
+    second: Perso|AggripeMur
+  - first:
+      74: 120793031129327567
+    second: Perso|AggripePlafond
+  - first:
+      74: 4908810275700624699
+    second: Perso|AggripeSol
+  - first:
+      74: -14628726250800707
+    second: Perso|Course
+  - first:
+      74: 2902462409787830250
+    second: Perso|Falling
+  - first:
+      74: -6645517919808052214
+    second: Perso|Idle
+  - first:
+      74: 28835160899723900
+    second: Perso|Saut
   externalObjects: {}
   materials:
     materialImportMode: 2
