@@ -240,8 +240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.25}
-  m_SizeDelta: {x: 1111, y: 519.5}
+  m_AnchoredPosition: {x: 30.5439, y: -55.336}
+  m_SizeDelta: {x: 2491.413, y: 1623.5625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &162437107
 MonoBehaviour:
@@ -348,7 +348,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '(NOM DU JEU)
+  m_Text: 'BETWEEN US
 
 
     A GAME BY:
@@ -778,7 +778,7 @@ MonoBehaviour:
     Artworks
 
 
-    Musical Genius
+    Music and SFX
 
 
     Animators
