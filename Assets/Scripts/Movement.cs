@@ -164,6 +164,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        _animator.SetBool("EnBoule", _ball);
+
         UnityEngine.GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
 
         if (Players[0].GetComponent<Transform>().position == transform.position)
