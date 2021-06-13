@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2959455592132289439}
   - component: {fileID: 613501734652324068}
   - component: {fileID: 8785422872133295238}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Frog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 6940492003675038886}
   - component: {fileID: 8130041308598177680}
   - component: {fileID: 4370696258858897009}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,6 +6,18 @@ using UnityEngine;
 public class Rope : MonoBehaviour
 {
     public float SegmentLength = 0.25f;
+    public bool RopeIsEnabled
+    {
+        get => _ropeIsEnabled;
+        set
+        {
+            _ropeIsEnabled = value;
+            _lineRenderer.enabled = _ropeIsEnabled;
+            for (int i = 0; i < _segmentCount; i++)
+                _ropeColliders[i].enabled = _ropeIsEnabled;        
+        }
+    }
+    private bool _ropeIsEnabled = true;
     [SerializeField] private int _segmentCount = 35;
     [SerializeField] private float _ropeWidth = 0.1f;
     [SerializeField] private bool _elastique = false;
@@ -18,9 +30,13 @@ public class Rope : MonoBehaviour
     [SerializeField] private float _force = 50.0f;
     [SerializeField] private bool _applyForceBetweenObjects = false;
 
+    [SerializeField] public float _ropeCooldown;
+
     private LineRenderer _lineRenderer;
     private List<RopeSegment> _ropeSegments = new List<RopeSegment>();
     private List<SphereCollider> _ropeColliders = new List<SphereCollider>();
+
+    public  float _timeRope = 0;
 
 
     void Start()
@@ -46,102 +62,122 @@ public class Rope : MonoBehaviour
 
     void Update()
     {
-        // Draw line
-        float lineWidth = _ropeWidth;
-        _lineRenderer.startWidth = lineWidth;
-        _lineRenderer.endWidth = lineWidth;
 
-        Vector3[] ropePositions = new Vector3[_segmentCount];
-        for (int i = 0; i < _segmentCount; i++)
+        if (RopeIsEnabled)
         {
-            ropePositions[i] = _ropeSegments[i].posNow;
-        }
+            // Draw line
+            float lineWidth = _ropeWidth;
+            _lineRenderer.startWidth = lineWidth;
+            _lineRenderer.endWidth = lineWidth;
 
-        _lineRenderer.positionCount = ropePositions.Length;
-        _lineRenderer.SetPositions(ropePositions);
+            Vector3[] ropePositions = new Vector3[_segmentCount];
+            for (int i = 0; i < _segmentCount; i++)
+            {
+                ropePositions[i] = _ropeSegments[i].posNow;
+            }
+
+            _lineRenderer.positionCount = ropePositions.Length;
+            _lineRenderer.SetPositions(ropePositions);
+        }
+        else
+        {
+            _lineRenderer.enabled = false;
+            _timeRope += Time.deltaTime;
+
+            if(_timeRope >= _ropeCooldown)
+            {
+                UnityEngine.GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
+                Players[0].GetComponent<Player>().Hit();
+                Players[1].GetComponent<Player>().Hit();
+            }
+
+        }
     }
 
     private void FixedUpdate()
     {
-        // Simulate
-        Vector2 forceGravity = new Vector2(0f, -1.5f);
-
-        for (int i = 0; i < _segmentCount; i++)
+        if (RopeIsEnabled)
         {
-            RopeSegment firstSegment = _ropeSegments[i];
-            Vector2 velocity = firstSegment.posNow - firstSegment.posOld;
-            firstSegment.posOld = firstSegment.posNow;
-            firstSegment.posNow += velocity;
-            firstSegment.posNow += forceGravity * Time.fixedDeltaTime;
-            _ropeSegments[i] = firstSegment;
-        }
+            // Simulate
+            Vector2 forceGravity = new Vector2(0f, -1.5f);
 
-        for (int i = 0; i < (_elastique ? 1 : 50); i++)
-        {
-            ApplyConstraint();
-        }
-
-        // Loop through all segments
-        for (int i = 0; i < _segmentCount; i++)
-        {
-            var curCollider = _ropeColliders[i];
-            // Set collider's initial position to that of the rope segment
-            curCollider.center = _ropeSegments[i].posNow;
-            // Get all collisions with the segment's sphere collider
-            var encounters = Physics.OverlapSphere(curCollider.center, curCollider.radius);
-            // Loop through all encountered colliders
-            for (int c = 0; c < encounters.Length; c++)
+            for (int i = 0; i < _segmentCount; i++)
             {
-                var encounter = encounters[c];
-                // Skip itself and the player
-                if (encounter != curCollider && encounter.gameObject.layer != 7 && encounter.gameObject.layer != 6)
+                RopeSegment firstSegment = _ropeSegments[i];
+                Vector2 velocity = firstSegment.posNow - firstSegment.posOld;
+                firstSegment.posOld = firstSegment.posNow;
+                firstSegment.posNow += velocity;
+                firstSegment.posNow += forceGravity * Time.fixedDeltaTime;
+                _ropeSegments[i] = firstSegment;
+            }
+
+            for (int i = 0; i < (_elastique ? 1 : 50); i++)
+            {
+                ApplyConstraint();
+            }
+
+            // Loop through all segments
+            for (int i = 0; i < _segmentCount; i++)
+            {
+                var curCollider = _ropeColliders[i];
+                // Set collider's initial position to that of the rope segment
+                curCollider.center = _ropeSegments[i].posNow;
+                // Get all collisions with the segment's sphere collider
+                var encounters = Physics.OverlapSphere(curCollider.center, curCollider.radius);
+                // Loop through all encountered colliders
+                for (int c = 0; c < encounters.Length; c++)
                 {
-                    // Calculate new position
-                    Physics.ComputePenetration(
-                        curCollider, transform.position, curCollider.transform.rotation, 
-                        encounter, encounter.transform.position, encounter.transform.rotation, 
-                        out Vector3 dir, out float dis);
+                    var encounter = encounters[c];
+                    // Skip itself and the player
+                    if (encounter != curCollider && encounter.gameObject.layer != 7 && encounter.gameObject.layer != 6)
+                    {
+                        // Calculate new position
+                        Physics.ComputePenetration(
+                            curCollider, transform.position, curCollider.transform.rotation,
+                            encounter, encounter.transform.position, encounter.transform.rotation,
+                            out Vector3 dir, out float dis);
 
-                    curCollider.center += dir * dis * 0.9f;
+                        curCollider.center += dir * dis * 0.9f;
+                    }
                 }
+
+                // Apply position to rope
+                var curSeg = _ropeSegments[i];
+                curSeg.posNow = curCollider.center;
+                _ropeSegments[i] = curSeg;
             }
 
-            // Apply position to rope
-            var curSeg = _ropeSegments[i];
-            curSeg.posNow = curCollider.center;
-            _ropeSegments[i] = curSeg;
-        }
+            // Add forces to tied rigidbodies
+            var currentRopeLength = CalculateRopeLength();
+            var ropeExtension = Mathf.Clamp(currentRopeLength - _segmentCount * SegmentLength, 0.0f, SegmentLength * 10.0f);
 
-        // Add forces to tied rigidbodies
-        var currentRopeLength = CalculateRopeLength();
-        var ropeExtension = Mathf.Clamp(currentRopeLength - _segmentCount * SegmentLength, 0.0f, SegmentLength * 10.0f);
+            if (_applyForceBetweenObjects)
+            {
+                if (_p1Stuck)
+                {
+                    if (ropeExtension > 0.0f)
+                        _p1.AddForce((_ropeSegments[_segmentCount / 2].posNow - _ropeSegments[0].posNow).normalized * _force * ropeExtension);
+                    //_p1.AddForce((_p2.position - _p1.position).normalized * ropeExtension * _force);
+                    _p1.useGravity = true;
+                }
+                else
+                {
+                    _p1.position = _ropeSegments[0].posNow;
+                    _p1.useGravity = false;
+                }
 
-        if (_applyForceBetweenObjects)
-        {
-            if (_p1Stuck)
-            {
-                if(ropeExtension > 0.0f)
-                    _p1.AddForce((_ropeSegments[_segmentCount / 2].posNow - _ropeSegments[0].posNow).normalized * _force * ropeExtension);
-                //_p1.AddForce((_p2.position - _p1.position).normalized * ropeExtension * _force);
-                _p1.useGravity = true;
-            }
-            else
-            {
-                _p1.position = _ropeSegments[0].posNow;
-                _p1.useGravity = false;
-            }
-
-            if (_p2Stuck)
-            {
-                if (ropeExtension > 0.0f)
-                    _p2.AddForce((_ropeSegments[_segmentCount / 2].posNow - _ropeSegments[_segmentCount - 1].posNow).normalized * _force * ropeExtension);
-                //_p2.AddForce((_p1.position - _p2.position).normalized * ropeExtension * _force);
-                _p2.useGravity = true;
-            }
-            else
-            {
-                _p2.position = _ropeSegments[_segmentCount - 1].posNow;
-                _p2.useGravity = false;
+                if (_p2Stuck)
+                {
+                    if (ropeExtension > 0.0f)
+                        _p2.AddForce((_ropeSegments[_segmentCount / 2].posNow - _ropeSegments[_segmentCount - 1].posNow).normalized * _force * ropeExtension);
+                    //_p2.AddForce((_p1.position - _p2.position).normalized * ropeExtension * _force);
+                    _p2.useGravity = true;
+                }
+                else
+                {
+                    _p2.position = _ropeSegments[_segmentCount - 1].posNow;
+                    _p2.useGravity = false;
+                }
             }
         }
     }
