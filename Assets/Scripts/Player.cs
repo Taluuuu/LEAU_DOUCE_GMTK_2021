@@ -18,8 +18,7 @@ public class Player : MonoBehaviour
     {
         if (gameObject.GetComponent<Transform>().position.y <= -20)
         {
-            Destroy(gameObject);
-            GameManager.Instance._onDead.Invoke();
+            Hit();
         }
     }
 
