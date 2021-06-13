@@ -15,7 +15,7 @@ public class EnnemyPlayerDetector : MonoBehaviour
             }
             else
             {
-                if (other.GetComponent<Movement>()._ropeBool)
+                if (other.GetComponent<Movement>()._rope.RopeIsEnabled)
                 {
                     other.GetComponent<Movement>().BrokeRope();
                 }
@@ -36,7 +36,7 @@ public class EnnemyPlayerDetector : MonoBehaviour
             }
             else
             {
-                if(other.collider.GetComponent<Movement>()._ropeBool)
+                if(other.collider.GetComponent<Movement>()._rope.RopeIsEnabled)
                 {
                     other.collider.GetComponent<Movement>().BrokeRope();
                 }
