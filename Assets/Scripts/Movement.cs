@@ -146,6 +146,26 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+
+        UnityEngine.GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
+
+        if(Players[0].GetComponent<Transform>().position == transform.position)
+        {
+            if ((Players[1].GetComponent<Transform>().position - transform.position).magnitude <= 2)
+            {
+                _rope.RopeIsEnabled = true;
+                _rope._timeRope = 0;
+            }
+        }
+        else
+        {
+
+            if ((Players[0].GetComponent<Transform>().position - transform.position).magnitude <= 2)
+            {
+                _rope.RopeIsEnabled = true;
+                _rope._timeRope = 0;
+            }
+        }
        
          //Determiner les forces
         _force.x = 0;

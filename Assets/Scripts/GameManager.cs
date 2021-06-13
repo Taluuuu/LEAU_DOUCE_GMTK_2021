@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private float _time;
-    private float _timeBeforeReset = 5;
+    private float _timeBeforeReset = 2;
     private bool _dead;
 
     public static GameManager Instance
