@@ -25,12 +25,19 @@ public class End : MonoBehaviour
             int _numbers = ((int)_numberOne-48)*10 + (int)_numberTwo-48;
             _numbers++;
 
-            
-
-            if (_numbers >= 10)
-                SceneManager.LoadScene("Niveau "+ _numbers.ToString(), LoadSceneMode.Single);
+            if (_numbers == 6)
+            {
+                SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+            }
             else
-                SceneManager.LoadScene("Niveau " + 0 + "" + _numbers.ToString(), LoadSceneMode.Single);
+            {
+
+                if (_numbers >= 10)
+                    SceneManager.LoadScene("Niveau " + _numbers.ToString(), LoadSceneMode.Single);
+                else
+                    SceneManager.LoadScene("Niveau " + 0 + "" + _numbers.ToString(), LoadSceneMode.Single);
+            }
+
         }
     }
 
