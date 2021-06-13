@@ -28,7 +28,15 @@ public class EnnemyPlayerDetector : MonoBehaviour
                 Destroy(gameObject);
             }
             else
-                other.collider.GetComponent<Player>().Hit();
+            {
+                if(other.collider.GetComponent<Movement>()._ropeBool)
+                {
+                    other.collider.GetComponent<Movement>().BrokeRope();
+                }
+                else
+                    other.collider.GetComponent<Player>().Hit();
+            }
+                
         }
     }
 }
