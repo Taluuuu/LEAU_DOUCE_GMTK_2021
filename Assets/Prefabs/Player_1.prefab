@@ -125,9 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a53935bcae3324ca16b7afd9365fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contractedLength: 0.1
+  _extendedLength: 0.2
   _normalSpeed: 30
-  _attackTime: 0
-  _attackCooldown: 0
+  _attackTime: 5
+  _attackCooldown: 3
   _player1: 1
   _player2: 0
   _timeAttack1: 0
@@ -135,6 +137,7 @@ MonoBehaviour:
   _ball: 0
   _jumpingSpeed: 5
   _bouncy: {fileID: 13400000, guid: 0725ec8003dbe2b4ea6185270a4b844a, type: 2}
+  _rope: {fileID: 0}
 --- !u!54 &639074673922193403
 Rigidbody:
   m_ObjectHideFlags: 0

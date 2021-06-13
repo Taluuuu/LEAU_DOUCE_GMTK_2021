@@ -134,7 +134,7 @@ public class Movement : MonoBehaviour
         }
 
 
-        _rope.SegmentLength = Input.GetKey(KeyCode.Space) ? _extendedLength : _contractedLength;
+        //_rope.SegmentLength = Input.GetKey(KeyCode.Space) ? _extendedLength : _contractedLength;
     }
 
     private void MovementPerso1()

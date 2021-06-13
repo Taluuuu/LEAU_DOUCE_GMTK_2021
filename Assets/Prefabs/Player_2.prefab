@@ -128,8 +128,8 @@ MonoBehaviour:
   _contractedLength: 0.1
   _extendedLength: 0.2
   _normalSpeed: 30
-  _attackTime: 0
-  _attackCooldown: 0
+  _attackTime: 5
+  _attackCooldown: 3
   _player1: 0
   _player2: 1
   _timeAttack1: 0
