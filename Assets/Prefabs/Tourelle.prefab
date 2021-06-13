@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e48182bb769a84e81f777ff211405f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootSpeed: 1
+  _shootSpeed: 2
   _projSpeed: 10
   _projectileTourelle: {fileID: 381316611865180184, guid: 1aaa80da1bae0764aaea2fe23ed22f48, type: 3}
 --- !u!114 &4760863114776091601
