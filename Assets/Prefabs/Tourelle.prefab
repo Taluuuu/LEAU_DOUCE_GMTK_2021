@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4760863114776091601}
   - component: {fileID: 3595868154317683537}
   - component: {fileID: 2855342586346149124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tourelle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 3453748603308912447}
   - component: {fileID: 284786947556085388}
   - component: {fileID: 1440948931033481596}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
