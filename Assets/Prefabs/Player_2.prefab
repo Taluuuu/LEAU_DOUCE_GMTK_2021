@@ -95,6 +95,8 @@ MonoBehaviour:
   _animator: {fileID: 0}
   _contractedLength: 0.1
   _extendedLength: 0.2
+  _normalMaterial: {fileID: 0}
+  _extendedMaterial: {fileID: 0}
   _normalSpeed: 30
   _attackTime: 5
   _attackCooldown: 3
