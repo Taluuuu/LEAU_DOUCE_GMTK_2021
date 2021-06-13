@@ -15,6 +15,10 @@ public class Frog : MonoBehaviour
     public float xspeed;
     public float yspeed;
     public float minimumyspeed;
+
+    public Transform model;
+
+    public Animator _animator;
     private void Awake()
     {
         rb = transform.GetComponent­<Rigidbody>();
@@ -31,10 +35,20 @@ public class Frog : MonoBehaviour
             PlayerArray = PlayerArray.OrderBy(w => (w.transform.position - rb.position).magnitude).ToArray();
             if (Mathf.Abs((PlayerArray[0].transform.position - rb.transform.position).magnitude) < Range)
             {
-                if (Mathf.Abs(PlayerArray[0].transform.position.x) - Mathf.Abs(rb.transform.position.x) > 0) rb.transform.rotation = Quaternion.Euler(0 ,0, 0);
-                if (Mathf.Abs(PlayerArray[0].transform.position.x) - Mathf.Abs(rb.transform.position.x) < 0) rb.transform.rotation = Quaternion.Euler(0, 180, 0);
+                if (Mathf.Abs(PlayerArray[0].transform.position.x) - Mathf.Abs(rb.transform.position.x) > 0) model.transform.rotation = Quaternion.Euler(0 ,0, 0);
+                if (Mathf.Abs(PlayerArray[0].transform.position.x) - Mathf.Abs(rb.transform.position.x) < 0) model.transform.rotation = Quaternion.Euler(0, 180, 0);
                 rb.AddForce(new Vector2((PlayerArray[0].transform.position - rb.position).normalized.x * xspeed, minimumyspeed + (PlayerArray[0].transform.position - rb.position).normalized.y) * yspeed, ForceMode.Impulse);
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _animator.SetBool("DansLesAirs", false);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        _animator.SetBool("DansLesAirs", true);
     }
 }
