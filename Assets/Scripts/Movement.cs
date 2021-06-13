@@ -74,13 +74,17 @@ public class Movement : MonoBehaviour
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     _rB.velocity = Vector3.zero;
-                    _rB.Sleep();
+                    _rB.isKinematic = true;
+                    _rB.useGravity = false;
+                    //_rB.Sleep();
                     _animator.SetBool(grabDir, true);
                     _grabbing = true;
                 }
                 else
                 {
-                    _rB.WakeUp();
+                    //_rB.WakeUp();
+                    _rB.isKinematic = false;
+                    _rB.useGravity = true;
                     _animator.SetBool("AggripeMur", false);
                     _animator.SetBool("AggripeSol", false);
                     _animator.SetBool("AggripePlafond", false);
@@ -92,13 +96,16 @@ public class Movement : MonoBehaviour
                 if (Input.GetKey(KeyCode.K))
                 {
                     _rB.velocity = Vector3.zero;
-                    _rB.Sleep();
+                    _rB.isKinematic = true;
+                    _rB.useGravity = false;
                     _animator.SetBool(grabDir, true);
                     _grabbing = true;
                 }
                 else
                 {
-                    _rB.WakeUp();
+                    //_rB.WakeUp();
+                    _rB.isKinematic = false;
+                    _rB.useGravity = true;
                     _animator.SetBool("AggripeMur", false);
                     _animator.SetBool("AggripeSol", false);
                     _animator.SetBool("AggripePlafond", false);
