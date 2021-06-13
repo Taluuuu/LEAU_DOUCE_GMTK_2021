@@ -77,6 +77,10 @@ public class Movement : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
+                    if (Input.GetKeyDown(KeyCode.LeftShift))
+                    {
+                        AudioManager.PlaySound("grab");
+                    }
                     _rB.velocity = Vector3.zero;
                     _rB.isKinematic = true;
                     _rB.useGravity = false;
@@ -99,6 +103,10 @@ public class Movement : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.K))
                 {
+                    if (Input.GetKeyDown(KeyCode.K))
+                    {
+                        AudioManager.PlaySound("grab");
+                    }
                     _rB.velocity = Vector3.zero;
                     _rB.isKinematic = true;
                     _rB.useGravity = false;
@@ -217,11 +225,19 @@ public class Movement : MonoBehaviour
         {
             _rope.SegmentLength = _extendedLength;
             _rope.GetComponent<LineRenderer>().material = _extendedMaterial;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                AudioManager.PlaySound("coretensionmaximale");
+            }
         }
         else
         {
             _rope.SegmentLength = _contractedLength;
             _rope.GetComponent<LineRenderer>().material = _normalMaterial;
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                AudioManager.PlaySound("retractioncorde");
+            }
         }
     }
 
