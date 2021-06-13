@@ -16,8 +16,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.GetComponent<Transform>().position.y == -25)
+        if (gameObject.GetComponent<Transform>().position.y <= -20)
+        {
             Destroy(gameObject);
+            GameManager.Instance._onDead.Invoke();
+        }
     }
 
     public void Hit()
