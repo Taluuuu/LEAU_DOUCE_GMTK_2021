@@ -12,7 +12,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _normalSpeed;
     [SerializeField] public float _attackTime;
     [SerializeField] private float _attackCooldown;
-    [SerializeField] private float _ropeCooldown;
     [SerializeField] public bool _player1;
     [SerializeField] public bool _player2;
 
@@ -23,13 +22,11 @@ public class Movement : MonoBehaviour
     private bool _stuckToWall;
     private bool _jump;
     public bool _ball = false;
-    private float _timeRope;
-    public bool _ropeBool = true;
 
     [SerializeField] private float _jumpingSpeed;
     [SerializeField] private PhysicMaterial _bouncy;
 
-    [SerializeField] private Rope _rope;
+    [SerializeField] public Rope _rope;
 
 
     private void Start()
@@ -105,19 +102,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        if (!_ropeBool)
-        {
-            if (_timeRope >= _ropeCooldown)
-            {
-                gameObject.GetComponent<Player>().Hit();
-            }
-            else
-            {
-                _timeRope += Time.deltaTime;
-            }
-        }
-
-
+       
          //Determiner les forces
         _force.x = 0;
         _force.y = 0;
@@ -282,12 +267,7 @@ public class Movement : MonoBehaviour
 
         if (collision.collider.CompareTag("Player"))
         {
-            if(!_ropeBool)
-            {
-                _ropeBool = true;
-                _timeRope = 0;
-                //_rope.create();
-            }
+            
         }
     }
 
@@ -301,8 +281,7 @@ public class Movement : MonoBehaviour
 
     public void BrokeRope()
     {
-        _ropeBool = false;
-        //_rope.destroy();
+        
     }
 
 }

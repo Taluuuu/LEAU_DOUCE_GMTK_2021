@@ -30,9 +30,13 @@ public class Rope : MonoBehaviour
     [SerializeField] private float _force = 50.0f;
     [SerializeField] private bool _applyForceBetweenObjects = false;
 
+    [SerializeField] public float _ropeCooldown;
+
     private LineRenderer _lineRenderer;
     private List<RopeSegment> _ropeSegments = new List<RopeSegment>();
     private List<SphereCollider> _ropeColliders = new List<SphereCollider>();
+
+    public  float _timeRope = 0;
 
 
     void Start()
@@ -58,6 +62,7 @@ public class Rope : MonoBehaviour
 
     void Update()
     {
+
         if (RopeIsEnabled)
         {
             // Draw line
@@ -77,6 +82,15 @@ public class Rope : MonoBehaviour
         else
         {
             _lineRenderer.enabled = false;
+            _timeRope += Time.deltaTime;
+
+            if(_timeRope >= _ropeCooldown)
+            {
+                UnityEngine.GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
+                Players[0].GetComponent<Player>().Hit();
+                Players[1].GetComponent<Player>().Hit();
+            }
+
         }
     }
 

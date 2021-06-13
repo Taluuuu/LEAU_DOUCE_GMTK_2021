@@ -9,12 +9,19 @@ public class EnnemyPlayerDetector : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            if (other.GetComponent<Movement>()._ball)
+            if(other.GetComponent<Movement>()._ball)
             {
                 Destroy(gameObject);
             }
             else
-                other.GetComponent<Player>().Hit();
+            {
+                if (other.GetComponent<Movement>()._rope.RopeIsEnabled)
+                {
+                    other.GetComponent<Movement>().BrokeRope();
+                }
+                else
+                    other.GetComponent<Player>().Hit();
+            }
         }
     }
 
@@ -29,7 +36,7 @@ public class EnnemyPlayerDetector : MonoBehaviour
             }
             else
             {
-                if(other.collider.GetComponent<Movement>()._ropeBool)
+                if(other.collider.GetComponent<Movement>()._rope.RopeIsEnabled)
                 {
                     other.collider.GetComponent<Movement>().BrokeRope();
                 }
