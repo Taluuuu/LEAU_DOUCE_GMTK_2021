@@ -7,6 +7,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private float _contractedLength = 0.1f, _extendedLength = 0.2f;
 
+    [SerializeField] private Material _normalMaterial;
+    [SerializeField] private Material _extendedMaterial;
+
     private Rigidbody _rB;
     Vector2 _force = new Vector2();
     private float _speed;
@@ -179,7 +182,16 @@ public class Movement : MonoBehaviour
         }
 
 
-        _rope.SegmentLength = Input.GetKey(KeyCode.Space) ? _extendedLength : _contractedLength;
+        if(Input.GetKey(KeyCode.Space))
+        {
+            _rope.SegmentLength = _extendedLength;
+            _rope.GetComponent<LineRenderer>().material = _extendedMaterial;
+        }
+        else
+        {
+            _rope.SegmentLength = _contractedLength;
+            _rope.GetComponent<LineRenderer>().material = _normalMaterial;
+        }
     }
 
     private void MovementPerso1()

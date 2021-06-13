@@ -62,7 +62,6 @@ public class Rope : MonoBehaviour
 
     void Update()
     {
-
         if (RopeIsEnabled)
         {
             // Draw line
