@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] public ParticleSystem dust;
     [SerializeField] private Animator _animator;
     [SerializeField] private float _contractedLength = 0.1f, _extendedLength = 0.2f;
 
@@ -310,6 +311,7 @@ public class Movement : MonoBehaviour
             _rB.AddForce(Vector2.up * _jumpingSpeed, ForceMode.Impulse);
             _animator.SetBool("Jumping", true);
             AudioManager.PlaySound("fshiou");
+            CreateDust();
         }
     }
 
@@ -321,6 +323,7 @@ public class Movement : MonoBehaviour
             _rB.AddForce(Vector2.up * _jumpingSpeed, ForceMode.Impulse);
             _animator.SetBool("Jumping", true);
             AudioManager.PlaySound("fshiou");
+            CreateDust();
         }
     }
 
@@ -419,5 +422,8 @@ public class Movement : MonoBehaviour
         Music[1].volume = 0f;
         Music[2].volume = 0.1f;
     }
-
+    void CreateDust()
+    {
+        dust.Play();
+    }
 }
