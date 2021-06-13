@@ -134,7 +134,7 @@ public class Movement : MonoBehaviour
         }
 
 
-        //_rope.SegmentLength = Input.GetKey(KeyCode.Space) ? _extendedLength : _contractedLength;
+        _rope.SegmentLength = Input.GetKey(KeyCode.Space) ? _extendedLength : _contractedLength;
     }
 
     private void MovementPerso1()
@@ -252,7 +252,7 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (Physics.Raycast(_rB.position, Vector3.down, 0.8f, 1 << 3))
+        if (Physics.Raycast(_rB.position, Vector3.down, 2.5f, 1 << 3))
         {
             _jump = false;
         }
