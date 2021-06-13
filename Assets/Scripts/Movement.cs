@@ -102,7 +102,25 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-       
+        UnityEngine.GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
+        if(Players[0].GetComponent<Transform>().position == gameObject.transform.position)
+        {
+            if ((transform.position - Players[1].GetComponent<Transform>().position).magnitude <= 1)
+            {
+                _rope.RopeIsEnabled = true;
+                _rope._timeRope = 0;
+            }
+        }
+        else
+        {
+            if ((transform.position - Players[0].GetComponent<Transform>().position).magnitude <= 1)
+            {
+                _rope.RopeIsEnabled = true;
+                _rope._timeRope = 0;
+            }
+        }
+
+
          //Determiner les forces
         _force.x = 0;
         _force.y = 0;
@@ -265,11 +283,8 @@ public class Movement : MonoBehaviour
             _stuckToWall = true;
         }
 
-        if (collision.collider.CompareTag("Player"))
-        {
-            
-        }
     }
+
 
     private void OnCollisionExit(Collision collision)
     {

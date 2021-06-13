@@ -15,9 +15,4 @@ public class ProjectileTourelle : MonoBehaviour
     {
         
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(gameObject);
-    }
 }
