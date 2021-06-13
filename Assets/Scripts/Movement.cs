@@ -192,13 +192,13 @@ public class Movement : MonoBehaviour
         }
         if (_rope.RopeIsEnabled == true)
         {
-            Music[1].volume = 0.015f;
-            Music[2].volume = 0f;
+            Music[1].volume = 0f;
+            Music[2].volume = 0.018f;
         }
         if (_rope.RopeIsEnabled == false)
         {
-            Music[1].volume = 0f;
-            Music[2].volume = 0.018f;
+            Music[1].volume = 0.015f;
+            Music[2].volume = 0f;
         }
 
         if (!_grabbing)
