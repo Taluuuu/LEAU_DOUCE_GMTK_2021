@@ -57,6 +57,10 @@ PrefabInstance:
       value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8115569976163422888, guid: 2a34e64e44306694687abf830fa1483b, type: 3}
+      propertyPath: _ropeCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8115569976163422888, guid: 2a34e64e44306694687abf830fa1483b, type: 3}
       propertyPath: _segmentCount
       value: 20
       objectReference: {fileID: 0}
