@@ -9,7 +9,7 @@ public class EnnemyPlayerDetector : MonoBehaviour
 
         if (other.CompareTag("Player") )
         {
-            if(other.GetComponent<Movement>()._ball)
+            if (other.GetComponent<Movement>()._ball)
             {
                 Destroy(gameObject);
             }
@@ -20,7 +20,9 @@ public class EnnemyPlayerDetector : MonoBehaviour
                     other.GetComponent<Movement>().BrokeRope();
                 }
                 else
+                {
                     other.GetComponent<Player>().Hit();
+                }
             }
         }
     }
@@ -28,9 +30,8 @@ public class EnnemyPlayerDetector : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         
-        if (other.collider.CompareTag("Player"))
+        if (other.collider.CompareTag("Player") & !gameObject.CompareTag("Ball"))
         {
-            Debug.Log("aa");
             if (other.collider.GetComponent<Movement>()._ball)
             {
                 Destroy(gameObject);

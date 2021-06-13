@@ -11,14 +11,14 @@ public class BackgroundOffset : MonoBehaviour
     void Awake()
     {
         Cam = FindObjectOfType<Camera>();
-        smoothSpeed = 0.01f;
+        smoothSpeed = 0.5f;
     }
     void Update()
     {
         if (PreviousCam != Cam.transform.position.x)
         {
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, new Vector3((Cam.transform.position.x-transform.position.x)*Ratio+transform.position.x,transform.position.y,transform.position.z), smoothSpeed);
-            transform.position = smoothedPosition;
+            //Vector3 smoothedPosition = Vector3.Lerp(transform.position, new Vector3((Cam.transform.position.x-transform.position.x)*Ratio+transform.position.x,transform.position.y,transform.position.z), smoothSpeed);
+            transform.position = new Vector3((Cam.transform.position.x - PreviousCam) * Ratio + transform.position.x, transform.position.y, transform.position.z);
             PreviousCam = Cam.transform.position.x;
         }
     }
