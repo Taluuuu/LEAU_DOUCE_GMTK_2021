@@ -142,15 +142,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackmode: {fileID: 8300000, guid: 243d299281275cf48b3ee8062a79e670, type: 3}
   botkitapdenmure: {fileID: 8300000, guid: f41825a5162000043a5ede9f7d3faf19, type: 3}
-  bruitrandominsecte: {fileID: 8300000, guid: f773e4989244b1640abfb5b490ff723e, type: 3}
   cordequipete: {fileID: 8300000, guid: ceb1c539c534c5d428e3bf38677b5e30, type: 3}
   coretensionmaximale: {fileID: 8300000, guid: 523406c129f16fe4894b138420d69413, type: 3}
   crachat: {fileID: 8300000, guid: 216acf9af2139d141aea9df90b3a70a5, type: 3}
   fshiou: {fileID: 8300000, guid: 4f3b24374ea4d394dba3c779c9e1dbef, type: 3}
-  fuwuwuwu: {fileID: 8300000, guid: a52bc710c2477b244b25ce59a2194635, type: 3}
   grab: {fileID: 8300000, guid: 1fe0ba7526a11b14fbb23b12c19a2117, type: 3}
   retractioncorde: {fileID: 8300000, guid: 246d5a10968d4f348b2272609094dff3, type: 3}
-  rikikiki: {fileID: 8300000, guid: c5cf0a2e61b832a46b2bb3a58390ef26, type: 3}
   schlotchelotche: {fileID: 8300000, guid: 14355b282906a774ebb46f73abe1dac8, type: 3}
   stalactitetombe: {fileID: 8300000, guid: 67913d397cc05b74fb4e0cf279271e6f, type: 3}
   sluurpe:
@@ -160,3 +157,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6424fc55b86f66546946add088d82f16, type: 3}
   - {fileID: 8300000, guid: 946ac5d1fbc6e9544ba8fd0a3b2c8aec, type: 3}
   - {fileID: 8300000, guid: e7bbdead320fbb1439c3e076739ecc99, type: 3}
+  environnement:
+  - {fileID: 8300000, guid: f773e4989244b1640abfb5b490ff723e, type: 3}
+  - {fileID: 8300000, guid: a52bc710c2477b244b25ce59a2194635, type: 3}
+  - {fileID: 8300000, guid: c5cf0a2e61b832a46b2bb3a58390ef26, type: 3}

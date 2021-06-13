@@ -248,7 +248,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 _force.x -= 1.0f;
-                if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
+                if (Physics.Raycast(_rB.position, Vector3.down, 2f, 1 << 3)) if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
             }
         }
 
@@ -257,7 +257,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 _force.x += 1.0f;
-                if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
+                if (Physics.Raycast(_rB.position, Vector3.down, 2f, 1 << 3)) if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
             }
         }
 
@@ -270,7 +270,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 _force.x -= 1.0f;
-                if (Random.Range(0,100)==1)AudioManager.PlaySound("cling");
+                if (Physics.Raycast(_rB.position, Vector3.down, 2f, 1 << 3)) if (Random.Range(0,100)==1)AudioManager.PlaySound("cling");
             }
         }
 
@@ -279,7 +279,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 _force.x += 1.0f;
-                if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
+                if (Physics.Raycast(_rB.position, Vector3.down, 2f, 1 << 3)) if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
             }
         }
     }
