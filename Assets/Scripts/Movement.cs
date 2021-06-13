@@ -165,6 +165,10 @@ public class Movement : MonoBehaviour
     void Update()
     {
         _animator.SetBool("EnBoule", _ball);
+        if(!_ball)
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 0, transform.rotation.eulerAngles.z);
+        }
 
         UnityEngine.GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
 
@@ -219,12 +223,18 @@ public class Movement : MonoBehaviour
 
             if (_force.x == 1)
             {
-                _rB.transform.rotation = Quaternion.Euler(-90, 0, 0);
+                if(!_ball)
+                    _rB.transform.rotation = Quaternion.Euler(-90, 0, transform.rotation.eulerAngles.z);
+                else
+                    transform.Rotate(0, Time.deltaTime * 540.0f, 0);
             }
 
             if (_force.x == -1)
             {
-                _rB.transform.rotation = Quaternion.Euler(-90, 180, 0);
+                if (!_ball)
+                    _rB.transform.rotation = Quaternion.Euler(-90, 180, transform.rotation.eulerAngles.z);
+                else
+                    transform.Rotate(0, -Time.deltaTime * 540.0f, 0);
             }
         }
 

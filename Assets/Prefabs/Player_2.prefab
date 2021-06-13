@@ -32,6 +32,7 @@ GameObject:
   - component: {fileID: 4176687238683490393}
   - component: {fileID: 1335130540162767831}
   - component: {fileID: 5350776223083959422}
+  - component: {fileID: 4511262216433594511}
   m_Layer: 0
   m_Name: Player_2
   m_TagString: Player
@@ -63,7 +64,7 @@ MeshCollider:
   m_GameObject: {fileID: 7383154953962616310}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -102,6 +103,8 @@ MonoBehaviour:
   _attackCooldown: 3
   _player1: 0
   _player2: 1
+  AudioManager: {fileID: 0}
+  Music: []
   _timeAttack1: 0
   _timeAttack2: 0
   _ball: 0
@@ -124,6 +127,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!135 &4511262216433594511
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383154953962616310}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.017
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1286751020592251028
 PrefabInstance:
   m_ObjectHideFlags: 0
