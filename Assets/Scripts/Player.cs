@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
 
     public void Hit()
     {
-
         GameManager.Instance._onDead.Invoke();
 
         Destroy(gameObject);
