@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] private float _contractedLength = 0.1f, _extendedLength = 0.2f;
+
     private Rigidbody _rB;
     Vector2 _force = new Vector2();
     private float _speed;
@@ -23,6 +25,8 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float _jumpingSpeed;
     [SerializeField] private PhysicMaterial _bouncy;
+
+    [SerializeField] private Rope _rope;
 
 
     private void Start()
@@ -129,6 +133,8 @@ public class Movement : MonoBehaviour
             _rB.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
 
+
+        _rope.SegmentLength = Input.GetKey(KeyCode.Space) ? _extendedLength : _contractedLength;
     }
 
     private void MovementPerso1()
