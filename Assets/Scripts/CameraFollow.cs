@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
     void FixedUpdate()
     {
 
-        Vector3 desiredPosition = new Vector3(((Player1.position.x + Player2.position.x) / 2), transform.position.y, transform.position.z);
+        Vector3 desiredPosition = new Vector3(((Player1.position.x + Player2.position.x) / 2), ((Player1.position.y + Player2.position.y) / 2), transform.position.z);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
         transform.position = smoothedPosition;

@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalSpeed: 30
-  _attackTime: 0
-  _attackCooldown: 0
+  _attackTime: 5
+  _attackCooldown: 3
   _player1: 1
   _player2: 0
   _timeAttack1: 0

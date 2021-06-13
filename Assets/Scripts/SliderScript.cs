@@ -12,6 +12,7 @@ public class SliderScript : MonoBehaviour
     private UnityEngine.GameObject _player2;
     private UnityEngine.GameObject[] Players;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,15 +34,22 @@ public class SliderScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_bar1)
-        {
-            gameObject.GetComponent<Slider>().value = _player1.GetComponent<Movement>()._timeAttack1/ _player1.GetComponent<Movement>()._attackTime;
-        }
+        Players = GameObject.FindGameObjectsWithTag("Player");
 
-        if (_bar2)
+        if (Players.Length > 1)
         {
 
-            gameObject.GetComponent<Slider>().value = _player2.GetComponent<Movement>()._timeAttack2 / _player2.GetComponent<Movement>()._attackTime;
+            if (_bar1)
+            {
+                gameObject.GetComponent<Slider>().value = _player1.GetComponent<Movement>()._timeAttack1 / _player1.GetComponent<Movement>()._attackTime;
+            }
+
+            if (_bar2)
+            {
+
+                gameObject.GetComponent<Slider>().value = _player2.GetComponent<Movement>()._timeAttack2 / _player2.GetComponent<Movement>()._attackTime;
+            }
         }
     }
+
 }
