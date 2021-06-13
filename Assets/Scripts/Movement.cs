@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _attackCooldown;
     [SerializeField] public bool _player1;
     [SerializeField] public bool _player2;
+    [SerializeField] public AudioManager AudioManager;
 
     private float _timeSinceAttack1;
     private float _timeSinceAttack2;
@@ -32,7 +33,10 @@ public class Movement : MonoBehaviour
 
     [SerializeField] public Rope _rope;
 
-
+    private void Awake()
+    {
+        AudioManager = FindObjectOfType<AudioManager>();
+    }
     private void Start()
     {
 
@@ -228,6 +232,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 _force.x -= 1.0f;
+                if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
             }
         }
 
@@ -236,6 +241,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 _force.x += 1.0f;
+                if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
             }
         }
 
@@ -248,6 +254,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 _force.x -= 1.0f;
+                if (Random.Range(0,100)==1)AudioManager.PlaySound("cling");
             }
         }
 
@@ -256,6 +263,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 _force.x += 1.0f;
+                if (Random.Range(0, 100) == 1) AudioManager.PlaySound("cling");
             }
         }
     }
@@ -303,6 +311,7 @@ public class Movement : MonoBehaviour
         {
 
             _ball = true;
+            AudioManager.PlaySound("attackmode");
             _timeSinceAttack1 = 0;
         }
 
@@ -332,6 +341,7 @@ public class Movement : MonoBehaviour
         {
 
             _ball = true;
+            AudioManager.PlaySound("attackmode");
             _timeSinceAttack2 = 0;
         }
     }
@@ -354,6 +364,7 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             //_stuckToWall = true;
+            AudioManager.PlaySound("botkitapdenmure");
         }
     }
 

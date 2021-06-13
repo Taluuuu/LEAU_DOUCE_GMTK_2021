@@ -299,6 +299,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3441774553688282623}
     - target: {fileID: 5771613064503720018, guid: 417bf9c5417e65b41a66c04078a8821d, type: 3}
+      propertyPath: AudioManager
+      value: 
+      objectReference: {fileID: 2909386759839836136, guid: 729a431972c952b46b4338ffdd887053, type: 3}
+    - target: {fileID: 5771613064503720018, guid: 417bf9c5417e65b41a66c04078a8821d, type: 3}
       propertyPath: _jumpingSpeed
       value: 15
       objectReference: {fileID: 0}
@@ -398,6 +402,10 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 4885371566084943561}
+    - target: {fileID: 1335130540162767831, guid: 37a7a73fe73442a42b26f0741f803ea1, type: 3}
+      propertyPath: AudioManager
+      value: 
+      objectReference: {fileID: 2909386759839836136, guid: 729a431972c952b46b4338ffdd887053, type: 3}
     - target: {fileID: 1335130540162767831, guid: 37a7a73fe73442a42b26f0741f803ea1, type: 3}
       propertyPath: _jumpingSpeed
       value: 15
