@@ -275,6 +275,7 @@ public class Movement : MonoBehaviour
             _jump = true;
             _rB.AddForce(Vector2.up * _jumpingSpeed, ForceMode.Impulse);
             _animator.SetBool("Jumping", true);
+            AudioManager.PlaySound("fshiou");
         }
     }
 
@@ -285,6 +286,7 @@ public class Movement : MonoBehaviour
             _jump = true;
             _rB.AddForce(Vector2.up * _jumpingSpeed, ForceMode.Impulse);
             _animator.SetBool("Jumping", true);
+            AudioManager.PlaySound("fshiou");
         }
     }
 
@@ -379,6 +381,7 @@ public class Movement : MonoBehaviour
     public void BrokeRope()
     {
         _rope.RopeIsEnabled = false;
+        AudioManager.PlaySound("cordequipete");
     }
 
 }
