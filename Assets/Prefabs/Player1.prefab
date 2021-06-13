@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7137148591954802040}
   - component: {fileID: 5077377967648155446}
   - component: {fileID: 5102186782511343614}
-  - component: {fileID: 7293890548008512015}
+  - component: {fileID: 2722881792410951519}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -85,8 +85,8 @@ MonoBehaviour:
   _ball: 0
   _jumpingSpeed: 5
   _bouncy: {fileID: 13400000, guid: 0725ec8003dbe2b4ea6185270a4b844a, type: 2}
---- !u!136 &7293890548008512015
-CapsuleCollider:
+--- !u!64 &2722881792410951519
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,11 +94,11 @@ CapsuleCollider:
   m_GameObject: {fileID: 3028873695421201682}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: b91472dcbd607584d86647fc4e57df7e, type: 3}
 --- !u!1 &4209875514815880528
 GameObject:
   m_ObjectHideFlags: 0

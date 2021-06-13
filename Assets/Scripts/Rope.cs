@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-    [SerializeField] private float _segmentLength = 0.25f;
+    public float SegmentLength = 0.25f;
     [SerializeField] private int _segmentCount = 35;
     [SerializeField] private float _ropeWidth = 0.1f;
     [SerializeField] private bool _elastique = false;
@@ -94,7 +94,7 @@ public class Rope : MonoBehaviour
             {
                 var encounter = encounters[c];
                 // Skip itself and the player
-                if (encounter != curCollider && encounter.gameObject.layer != 0)
+                if (encounter != curCollider && encounter.gameObject.layer != 7 && encounter.gameObject.layer != 6)
                 {
                     // Calculate new position
                     Physics.ComputePenetration(
@@ -114,8 +114,8 @@ public class Rope : MonoBehaviour
 
         // Add forces to tied rigidbodies
         var currentRopeLength = CalculateRopeLength();
-        var ropeExtension = Mathf.Clamp(currentRopeLength - _segmentCount * _segmentLength, 0.0f, _segmentLength * 10.0f);
-        Debug.Log(ropeExtension);
+        var ropeExtension = Mathf.Clamp(currentRopeLength - _segmentCount * SegmentLength, 0.0f, SegmentLength * 10.0f);
+
         if (_applyForceBetweenObjects)
         {
             if (_p1Stuck)
@@ -123,10 +123,12 @@ public class Rope : MonoBehaviour
                 if(ropeExtension > 0.0f)
                     _p1.AddForce((_ropeSegments[_segmentCount / 2].posNow - _ropeSegments[0].posNow).normalized * _force * ropeExtension);
                 //_p1.AddForce((_p2.position - _p1.position).normalized * ropeExtension * _force);
+                _p1.useGravity = true;
             }
             else
             {
                 _p1.position = _ropeSegments[0].posNow;
+                _p1.useGravity = false;
             }
 
             if (_p2Stuck)
@@ -134,10 +136,12 @@ public class Rope : MonoBehaviour
                 if (ropeExtension > 0.0f)
                     _p2.AddForce((_ropeSegments[_segmentCount / 2].posNow - _ropeSegments[_segmentCount - 1].posNow).normalized * _force * ropeExtension);
                 //_p2.AddForce((_p1.position - _p2.position).normalized * ropeExtension * _force);
+                _p2.useGravity = true;
             }
             else
             {
                 _p2.position = _ropeSegments[_segmentCount - 1].posNow;
+                _p2.useGravity = false;
             }
         }
     }
@@ -173,14 +177,14 @@ public class Rope : MonoBehaviour
                 RopeSegment secondSeg = _ropeSegments[i + 1];
 
                 float dist = (firstSeg.posNow - secondSeg.posNow).magnitude;
-                float error = Mathf.Abs(dist - _segmentLength);
+                float error = Mathf.Abs(dist - SegmentLength);
                 Vector2 changeDir = Vector2.zero;
 
-                if (dist > _segmentLength)
+                if (dist > SegmentLength)
                 {
                     changeDir = (firstSeg.posNow - secondSeg.posNow).normalized;
                 }
-                else if (dist < _segmentLength)
+                else if (dist < SegmentLength)
                 {
                     changeDir = (secondSeg.posNow - firstSeg.posNow).normalized;
                 }
@@ -208,14 +212,14 @@ public class Rope : MonoBehaviour
                 RopeSegment secondSeg = _ropeSegments[i - 1];
 
                 float dist = (firstSeg.posNow - secondSeg.posNow).magnitude;
-                float error = Mathf.Abs(dist - _segmentLength);
+                float error = Mathf.Abs(dist - SegmentLength);
                 Vector2 changeDir = Vector2.zero;
 
-                if (dist > _segmentLength)
+                if (dist > SegmentLength)
                 {
                     changeDir = (firstSeg.posNow - secondSeg.posNow).normalized;
                 }
-                else if (dist < _segmentLength)
+                else if (dist < SegmentLength)
                 {
                     changeDir = (secondSeg.posNow - firstSeg.posNow).normalized;
                 }

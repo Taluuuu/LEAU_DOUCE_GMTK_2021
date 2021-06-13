@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Twomp
+  - Rope
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - Water
   - UI
   - Rope
-  - 
+  - boiz
   - 
   - 
   - 
