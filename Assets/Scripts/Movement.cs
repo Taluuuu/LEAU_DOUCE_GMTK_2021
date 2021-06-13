@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _normalSpeed;
     [SerializeField] public float _attackTime;
     [SerializeField] private float _attackCooldown;
-    [SerializeField] private float _ropeCooldown;
+    [SerializeField] public float _ropeCooldown;
     [SerializeField] public bool _player1;
     [SerializeField] public bool _player2;
 
@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
     private bool _stuckToWall;
     private bool _jump;
     public bool _ball = false;
-    private float _timeRope;
+    public float _timeRope = 0;
     public bool _ropeBool = true;
 
     [SerializeField] private float _jumpingSpeed;

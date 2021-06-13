@@ -7,6 +7,7 @@ public class SliderScript : MonoBehaviour
 {
     [SerializeField] private bool _bar1;
     [SerializeField] private bool _bar2;
+    [SerializeField] private bool _bar3;
 
     private UnityEngine.GameObject _player1;
     private UnityEngine.GameObject _player2;
@@ -48,6 +49,24 @@ public class SliderScript : MonoBehaviour
             {
 
                 gameObject.GetComponent<Slider>().value = _player2.GetComponent<Movement>()._timeAttack2 / _player2.GetComponent<Movement>()._attackTime;
+            }
+
+            if(_bar3)
+            {
+
+                if (gameObject.GetComponent<RectTransform>().position.y == 535 & !_player1.GetComponent<Movement>()._ropeBool)
+                {
+                    gameObject.transform.SetPositionAndRotation(new Vector3(transform.position.x, 450, transform.position.z), transform.rotation);
+                }
+
+                gameObject.GetComponent<Slider>().value = (_player1.GetComponent<Movement>()._timeRope + _player1.GetComponent<Movement>()._ropeCooldown)/_player1.GetComponent<Movement>()._ropeCooldown;
+
+                if(gameObject.GetComponent<RectTransform>().position.y == 535 & !_player2.GetComponent<Movement>()._ropeBool)
+                {
+                    gameObject.transform.SetPositionAndRotation(new Vector3(transform.position.x, 450, transform.position.z), transform.rotation);
+                }
+
+                //gameObject.GetComponent<Slider>().value = (_player2.GetComponent<Movement>()._timeRope + _player2.GetComponent<Movement>()._ropeCooldown) / _player2.GetComponent<Movement>()._ropeCooldown;
             }
         }
     }
