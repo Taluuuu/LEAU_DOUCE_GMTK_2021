@@ -164,6 +164,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        _animator.SetBool("EnBoule", _ball);
+
         UnityEngine.GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
 
         if (Players[0].GetComponent<Transform>().position == transform.position)
@@ -171,8 +173,8 @@ public class Movement : MonoBehaviour
             if ((Players[1].GetComponent<Transform>().position - transform.position).magnitude <= 2)
             {
                 _rope.RopeIsEnabled = true;
-                Music[3].enabled = true;
-                Music[2].enabled = false;
+                Music[1].volume = 0.1f;
+                Music[2].volume = 0f;
                 _rope._timeRope = 0;
             }
         }
@@ -182,8 +184,8 @@ public class Movement : MonoBehaviour
             if ((Players[0].GetComponent<Transform>().position - transform.position).magnitude <= 2)
             {
                 _rope.RopeIsEnabled = true;
-                Music[3].enabled = true;
-                Music[2].enabled = false;
+                Music[1].volume = 0.1f;
+                Music[2].volume = 0f;
                 _rope._timeRope = 0;
             }
         }
@@ -404,8 +406,8 @@ public class Movement : MonoBehaviour
     {
         _rope.RopeIsEnabled = false;
         AudioManager.PlaySound("cordequipete");
-        Music[2].enabled = true;
-        Music[3].enabled = false;
+        Music[1].volume = 0f;
+        Music[2].volume = 0.1f;
     }
 
 }

@@ -1,38 +1,8 @@
 fileFormatVersion: 2
-guid: d30ee177dd6a60d4c9d1ea5ad15d38a0
+guid: f31548e86ca80e84189e75f9316e440c
 ModelImporter:
   serializedVersion: 21100
-  internalIDToNameTable:
-  - first:
-      74: 1843454935195192312
-    second: Bouboule
-  - first:
-      74: -5525156782968029510
-    second: Perso|AggripeMur
-  - first:
-      74: 120793031129327567
-    second: Perso|AggripePlafond
-  - first:
-      74: 4908810275700624699
-    second: Perso|AggripeSol
-  - first:
-      74: 8565850714607322623
-    second: Perso|Bouboule
-  - first:
-      74: -4089534663684248633
-    second: Perso|CorpsAction
-  - first:
-      74: -14628726250800707
-    second: Perso|Course
-  - first:
-      74: 2902462409787830250
-    second: Perso|Falling
-  - first:
-      74: -6645517919808052214
-    second: Perso|Idle
-  - first:
-      74: 28835160899723900
-    second: Perso|Saut
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
